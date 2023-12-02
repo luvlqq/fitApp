@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int                 @unique @default(autoincrement())
+  email             String              @unique
+  password          String
+  hashRt            String?
+  role              Role                @default(User)
+  Workouts          Workouts[]
+  HealthData        HealthData?
+  FavouriteWorkouts FavouriteWorkouts[]
+  Achivments        Achivments[]
+  Goals             Goals[]
+  NutrionPlans      NutrionPlans[]
+}
+
+model Workouts {
+  id                Int                 @unique @default(autoincrement())
+  name              String
+  description       String
+  duration          DateTime
+  timeOfExercise    DateTime
+  user              User?               @relation(fields: [userId], references: [id])
+  userId            Int?
+  Exercise          Exercise[]
+  FavouriteWorkouts FavouriteWorkouts[]
+}
+
+model Exercise {
+  id              Int                 @unique @default(autoincrement())
+  name            String
+  description     String
+  video           String
+  workout         Workouts?            @relation(fields: [workoutId], references: [id])
+  workoutId       Int?
+  gropuOfMuscules groupOfMusculesENUM
+}
+
+model FavouriteWorkouts {
+  id        Int      @unique @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  workout   Workouts @relation(fields: [workoutId], references: [id])
+  workoutId Int
+}
+
+model HealthData {
+  id     Int   @unique @default(autoincrement())
+  weight Float
+  height Float
+  age    Int
+  user   User  @relation(fields: [userId], references: [id])
+  userId Int   @unique
+}
+
+model NutrionPlans {
+  id          Int     @unique @default(autoincrement())
+  name        String
+  description String
+  proteins    Float
+  fats        Float
+  carbs       Float
+  kkal        Float
+  Meals       Meals[]
+  User        User?   @relation(fields: [userId], references: [id])
+  userId      Int?
+}
+
+model Meals {
+  id            Int           @unique @default(autoincrement())
+  name          String
+  photo         String
+  description   String
+  recipe        String
+  timeToPrepare String
+  proteins      Float
+  fats          Float
+  carbs         Float
+  kkal          Float
+  nutrion       NutrionPlans? @relation(fields: [nutrionId], references: [id])
+  nutrionId     Int?
+}
+
+model Goals {
+  id            Int   @unique @default(autoincrement())
+  user          User  @relation(fields: [userId], references: [id])
+  userId        Int
+  exercisesDone Int
+  weight        Float
+}
+
+model Achivments {
+  id            Int      @unique @default(autoincrement())
+  name          String
+  description   String
+  dateOfCollect DateTime @default(now())
+
+  User   User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+enum groupOfMusculesENUM {
+  Chest
+  Back
+  Hips
+  Bicep
+  Triceps
+  Delta
+  Press
+  Caviar
+  Trapezium
+  Forearm
+}
+
+enum Role {
+  Admin
+  User
+}

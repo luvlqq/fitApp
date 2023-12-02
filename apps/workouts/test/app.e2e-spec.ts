@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { WorkoutsModule } from './../src/workouts.module';
+import { WorkoutsModule } from '../src/modules/workouts.module';
 
 describe('WorkoutsController (e2e)', () => {
   let app: INestApplication;
