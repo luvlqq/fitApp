@@ -1,0 +1,49 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+} from '@nestjs/common';
+import { WorkoutsGatewayService } from './workouts.service';
+import { CreateWorkoutsDto } from './dto/create.workouts.dto';
+import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('Workouts')
+@Controller('workouts')
+export class WorkoutsGatewayController {
+  constructor(private readonly workoutsService: WorkoutsGatewayService) {}
+
+  @Get()
+  public async getAllWorkouts() {
+    return this.workoutsService.findALlWorkouts();
+  }
+
+  @Post()
+  public async createWorkout(@Body() dto: CreateWorkoutsDto) {
+    return this.workoutsService.createWorkout(dto);
+  }
+
+  @Post('create-with-exercise')
+  public async createWorkoutByExercises(@Body() dto: CreateWorkoutsDto) {
+    console.log(dto.exerciseId);
+    return this.workoutsService.createWorkoutByExercises(dto, dto.exerciseId);
+  }
+
+  @Patch(':id')
+  public async updateWorkout(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: UpdateWorkoutsDto,
+  ) {
+    return this.workoutsService.updateWorkout(id, dto);
+  }
+
+  @Delete(':id')
+  public async deleteWorkout(@Param('id', ParseIntPipe) id: number) {
+    return this.workoutsService.deleteWorkout(id);
+  }
+}
