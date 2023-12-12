@@ -8,6 +8,7 @@ import { MealsGatewayModule } from './modules/meals/meals/meals.module';
 import { UsersGatewayModule } from './modules/auth/users/users/users.module';
 import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.module';
 import { ExerciseGatewayModule } from './modules/workouts/exercises/exercise.module';
+import { AppleHealthGatewayModule } from './modules/auth/users/appleHealth/appleHealth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ExerciseGatewayModule } from './modules/workouts/exercises/exercise.mod
     }),
     AuthGatewayModule,
     UsersGatewayModule,
+    AppleHealthGatewayModule,
     MealsGatewayModule,
     WorkoutsGatewayModule,
     ExerciseGatewayModule,
