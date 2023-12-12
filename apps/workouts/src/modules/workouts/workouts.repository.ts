@@ -7,7 +7,6 @@ import { UpdateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workout
 export class WorkoutsRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  // TODO преписать так, что бы вывадилась не вся инфа о пользователе
   public async getAllWorkouts() {
     return this.prisma.workouts.findMany({
       include: { Exercise: true, user: true },
