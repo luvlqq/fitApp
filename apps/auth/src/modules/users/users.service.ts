@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersMicroserviceRepository } from './users.repository';
-import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/dto/healthdata.dto';
+import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
 import { UpdateHealthData } from './dto/update.healthData.dto';
 
 @Injectable()

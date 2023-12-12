@@ -1,8 +1,8 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { UsersMicroserviceService } from './users.service';
-import { SHOW_USER_INFO } from 'apps/api-gateway/src/modules/auth/users/constants';
-import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/dto/healthdata.dto';
+import { SHOW_USER_INFO } from 'apps/api-gateway/src/modules/auth/users/users/constants';
+import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
 import { UpdateHealthData } from './dto/update.healthData.dto';
 
 @Controller()

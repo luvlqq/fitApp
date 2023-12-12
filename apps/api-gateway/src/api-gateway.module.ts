@@ -5,7 +5,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGatewayModule } from './modules/auth/auth/auth.module';
 import configuration from '@app/common/configuration/configuration';
 import { MealsGatewayModule } from './modules/meals/meals/meals.module';
-import { UsersGatewayModule } from './modules/auth/users/users.module';
+import { UsersGatewayModule } from './modules/auth/users/users/users.module';
 import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.module';
 import { ExerciseGatewayModule } from './modules/workouts/exercises/exercise.module';
 
