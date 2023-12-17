@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meals-deployment
+  labels:
+    app: meals
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: meals
+  template:
+    metadata:
+      labels:
+        app: meals
+    spec:
+      containers:
+      - name: meals
+        image: meals:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meals-service
+spec:
+  selector:
+    app: meals
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3001
+  type: LoadBalancer

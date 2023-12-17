@@ -29,7 +29,7 @@ services:
       - '5672:5672'
       - '15672:15672'
 
-  # gateway:
+  # api-gateway:
   #   mem_limit: 1024m
   #   build:
   #     context: ./
