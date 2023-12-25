@@ -7,12 +7,14 @@ import { AtStrategy } from 'apps/api-gateway/src/modules/auth/auth/strategies/at
 import { JwtModule } from '@nestjs/jwt';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
 import { MailerMicroserviceModule } from './users/mailer/mailer.module';
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
 
 @Module({
   imports: [
     AuthModule,
     MailerMicroserviceModule,
     UsersMicroserviceModule,
+    WinstonLoggerModule,
     JwtModule.register({}),
     RmqModule,
   ],

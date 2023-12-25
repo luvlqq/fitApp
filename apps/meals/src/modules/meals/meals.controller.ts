@@ -1,4 +1,4 @@
-import { Controller, Get, ParseIntPipe } from '@nestjs/common';
+import { Controller, ParseIntPipe } from '@nestjs/common';
 import { MealsMicroserviceService } from './meals.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateMealDto } from './dto/create.meals.dto';

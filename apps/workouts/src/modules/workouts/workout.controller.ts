@@ -1,12 +1,12 @@
 import { Controller } from '@nestjs/common';
-import { WorkoutsService } from './workout.service';
+import { WorkoutsMicroserviceService } from './workout.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
 import { UpdateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/update.workouts.dto';
 
 @Controller()
 export class WorkoutsController {
-  constructor(private readonly workoutsService: WorkoutsService) {}
+  constructor(private readonly workoutsService: WorkoutsMicroserviceService) {}
 
   @MessagePattern('SHOW_ALL_WORKOUTS')
   public async getAllWorkouts() {

@@ -21,5 +21,7 @@ export class MailerMicroserviceService {
     userEmail: string,
     userId: number,
     mailText: string,
-  ): Promise<void> {}
+  ): Promise<void> {
+    return null;
+  }
 }

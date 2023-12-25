@@ -11,6 +11,7 @@ import configuration from '@app/common/configuration/configuration';
 import { UsersMicroserviceModule } from '../users/users/users.module';
 import { MailerMicroserviceModule } from '../users/mailer/mailer.module';
 import { MailerMicroserviceService } from '../users/mailer/mailer.service';
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { MailerMicroserviceService } from '../users/mailer/mailer.service';
     PrismaModule,
     UsersMicroserviceModule,
     MailerMicroserviceModule,
+    WinstonLoggerModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
       load: [configuration],
