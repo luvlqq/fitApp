@@ -1,7 +1,9 @@
 import { Controller, Get, Patch, Post } from '@nestjs/common';
 import { AppleHealthGatewayService } from './appleHealth.service';
 import { GetCurrentUserId } from '../../auth/decorators';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Apple Health')
 @Controller('appleHealth')
 export class AppleHealthGatewayController {
   constructor(private readonly appleHealthService: AppleHealthGatewayService) {}

@@ -11,6 +11,7 @@ import { JwtTokensService } from './jwt.tokens.service';
 import { AuthDto } from './dto/auth.dto';
 import * as bcrypt from 'bcrypt';
 import { Constants } from '@app/common/constants/constants';
+import { MailerMicroserviceService } from '../users/mailer/mailer.service';
 
 @Injectable()
 export class AuthService {
@@ -19,6 +20,7 @@ export class AuthService {
     private readonly repository: AuthRepository,
     private readonly jwtTokenService: JwtTokensService,
     private readonly prisma: PrismaService,
+    private readonly mailer: MailerMicroserviceService,
   ) {}
 
   public async register(dto: AuthDto) {
@@ -60,6 +62,7 @@ export class AuthService {
       user.role,
     );
     await this.jwtTokenService.updateRtHash(user.id, tokens.refreshToken);
+    await this.mailer.sendLogInMail(dto.email);
     return tokens;
   }
 
