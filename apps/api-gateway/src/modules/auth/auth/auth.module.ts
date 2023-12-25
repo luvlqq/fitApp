@@ -10,6 +10,7 @@ import { AuthService } from 'apps/auth/src/modules/auth/auth.service';
 import { AuthRepository } from 'apps/auth/src/modules/auth/auth.repository';
 import { AuthMicroserviceModule } from 'apps/auth/src/modules/auth.module';
 import configuration from '@app/common/configuration/configuration';
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import configuration from '@app/common/configuration/configuration';
     }),
     PrismaModule,
     AuthMicroserviceModule,
+    WinstonLoggerModule,
     JwtModule.register({}),
   ],
   controllers: [AuthGatewayController],

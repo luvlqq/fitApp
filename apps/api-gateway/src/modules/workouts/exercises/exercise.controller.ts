@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
 } from '@nestjs/common';
@@ -29,14 +30,14 @@ export class ExerciseGatewayController {
 
   @Patch(':id')
   public async updateExercise(
-    @Param('id') id: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateExerciseDto,
   ) {
     return this.exerciseService.updateExercise(id, dto);
   }
 
   @Delete(':id')
-  public async deleteExercise(@Param('id') id: number) {
+  public async deleteExercise(@Param('id', ParseIntPipe) id: number) {
     return this.exerciseService.deleteExercise(id);
   }
 }

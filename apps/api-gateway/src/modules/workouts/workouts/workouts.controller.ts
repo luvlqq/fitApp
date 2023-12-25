@@ -39,7 +39,9 @@ export class WorkoutsGatewayController {
   public async startWorkout(
     @GetCurrentUserId() userId: number,
     workoutId: number,
-  ) {}
+  ) {
+    return null;
+  }
 
   @Patch(':id')
   public async updateWorkout(
