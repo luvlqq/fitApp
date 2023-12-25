@@ -8,7 +8,9 @@ import { PrismaModule } from '@app/db';
 import { ConfigModule } from '@nestjs/config';
 import { JwtTokensService } from './jwt.tokens.service';
 import configuration from '@app/common/configuration/configuration';
-import { UsersMicroserviceModule } from '../users/users.module';
+import { UsersMicroserviceModule } from '../users/users/users.module';
+import { MailerMicroserviceModule } from '../users/mailer/mailer.module';
+import { MailerMicroserviceService } from '../users/mailer/mailer.service';
 
 @Module({
   imports: [
@@ -16,6 +18,7 @@ import { UsersMicroserviceModule } from '../users/users.module';
     RmqModule,
     PrismaModule,
     UsersMicroserviceModule,
+    MailerMicroserviceModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
       load: [configuration],
@@ -27,6 +30,7 @@ import { UsersMicroserviceModule } from '../users/users.module';
     AuthService,
     AuthRepository,
     JwtTokensService,
+    MailerMicroserviceService,
     // RtStrategy,
     // AtStrategy,
     Logger,

@@ -12,6 +12,7 @@ import { WorkoutsGatewayService } from './workouts.service';
 import { CreateWorkoutsDto } from './dto/create.workouts.dto';
 import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { GetCurrentUserId } from '../../auth/auth/decorators';
 
 @ApiTags('Workouts')
 @Controller('workouts')
@@ -33,6 +34,12 @@ export class WorkoutsGatewayController {
     console.log(dto.exerciseId);
     return this.workoutsService.createWorkoutByExercises(dto, dto.exerciseId);
   }
+
+  @Post('start-workout')
+  public async startWorkout(
+    @GetCurrentUserId() userId: number,
+    workoutId: number,
+  ) {}
 
   @Patch(':id')
   public async updateWorkout(
