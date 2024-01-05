@@ -3,22 +3,28 @@ import { MealsMicroserviceService } from './meals.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateMealDto } from './dto/create.meals.dto';
 import { UpdateMealsDto } from './dto/update.meals.dto';
+import {
+  ALLMEALS,
+  CREATEMEALS,
+  DELETEMEALS,
+  UPDATEMEALS,
+} from '@app/common/messages/meals/meals';
 
 @Controller()
 export class MealsController {
   constructor(private readonly mealsService: MealsMicroserviceService) {}
 
-  @MessagePattern('ALLMEALS')
+  @MessagePattern(ALLMEALS)
   public async getAllMeals() {
     return this.mealsService.getAllMeals();
   }
 
-  @MessagePattern('CREATEMEALS')
+  @MessagePattern(CREATEMEALS)
   public async createMeal(@Payload('dto') dto: CreateMealDto) {
     return this.mealsService.createMeals(dto);
   }
 
-  @MessagePattern('UPDATEMEALS')
+  @MessagePattern(UPDATEMEALS)
   public async updateMeals(
     @Payload('id', ParseIntPipe) id: number,
     @Payload('dto') dto: UpdateMealsDto,
@@ -26,7 +32,7 @@ export class MealsController {
     return this.mealsService.updateMeal(id, dto);
   }
 
-  @MessagePattern('DELETEMEALS')
+  @MessagePattern(DELETEMEALS)
   public async deleteMeals(@Payload('id') id: number) {
     return this.mealsService.deleteMeals(id);
   }

@@ -3,20 +3,25 @@ import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
 import { CreateWorkoutsDto } from './dto/create.workouts.dto';
 import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
+import {
+  CREATE_WORKOUT,
+  CREATE_WORKOUT_BY_EXERCISES,
+  DELETE_WORKOUT,
+  SHOW_ALL_WORKOUTS,
+  UPDATE_WORKOUT,
+} from '@app/common/messages/workouts/workouts';
 
 @Injectable()
 export class WorkoutsGatewayService {
   constructor(@Inject('WORKOUTS') private workoutsClient: ClientProxy) {}
 
   public async findALlWorkouts() {
-    return await lastValueFrom(
-      this.workoutsClient.send('SHOW_ALL_WORKOUTS', {}),
-    );
+    return await lastValueFrom(this.workoutsClient.send(SHOW_ALL_WORKOUTS, {}));
   }
 
   public async createWorkout(dto: CreateWorkoutsDto) {
     return await lastValueFrom(
-      this.workoutsClient.send('CREATE_WORKOUT', { dto: dto }),
+      this.workoutsClient.send(CREATE_WORKOUT, { dto: dto }),
     );
   }
 
@@ -25,7 +30,7 @@ export class WorkoutsGatewayService {
     exerciseId: number[],
   ) {
     return await lastValueFrom(
-      this.workoutsClient.send('CREATE_WORKOUT_BY_EXERCISES', {
+      this.workoutsClient.send(CREATE_WORKOUT_BY_EXERCISES, {
         dto: dto,
         exerciseId: exerciseId,
       }),
@@ -34,13 +39,13 @@ export class WorkoutsGatewayService {
 
   public async updateWorkout(id: number, dto: UpdateWorkoutsDto) {
     return await lastValueFrom(
-      this.workoutsClient.send('UPDATE_WORKOUT', { id: id, dto: dto }),
+      this.workoutsClient.send(UPDATE_WORKOUT, { id: id, dto: dto }),
     );
   }
 
   public async deleteWorkout(id: number) {
     return await lastValueFrom(
-      this.workoutsClient.send('DELETE_WORKOUT', { id: id }),
+      this.workoutsClient.send(DELETE_WORKOUT, { id: id }),
     );
   }
 }

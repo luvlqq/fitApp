@@ -1,9 +1,15 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
-import { SHOW_USER_INFO } from './constants';
 import { HealthDataDto } from './dto/healthdata.dto';
 import { UpdateHealthData } from './dto/update.healthData.dto';
+import {
+  ADD_WORKOUT_TO_FAVORITE,
+  HEALTH_DATA,
+  SHOW_USER_INFO,
+  SUBSCRIBE_TO_WORKOUT,
+  UPDATE_HEALTH_DATA,
+} from '@app/common/messages/auth/users/users';
 
 @Injectable()
 export class UsersGatewayService {
@@ -17,19 +23,19 @@ export class UsersGatewayService {
 
   public async addHealthData(userId: number, dto: HealthDataDto) {
     return await lastValueFrom(
-      this.authClient.send('HEALTH_DATA', { userId: userId, dto: dto }),
+      this.authClient.send(HEALTH_DATA, { userId: userId, dto: dto }),
     );
   }
 
   public async updateHealthData(userId: number, dto: UpdateHealthData) {
     return await lastValueFrom(
-      this.authClient.send('UPDATE_HEALTH_DATA', { userId: userId, dto: dto }),
+      this.authClient.send(UPDATE_HEALTH_DATA, { userId: userId, dto: dto }),
     );
   }
 
   public async addWorkoutsToFavourite(userId: number, workoutId: number) {
     return await lastValueFrom(
-      this.authClient.send('ADD_WORKOUT_TO_FAVORITE', {
+      this.authClient.send(ADD_WORKOUT_TO_FAVORITE, {
         userId: userId,
         workoutId: workoutId,
       }),
@@ -38,7 +44,7 @@ export class UsersGatewayService {
 
   public async subscribeToWorkout(userId: number, workoutId: number) {
     return await lastValueFrom(
-      this.authClient.send('SUBSCRIBE_TO_WORKOUT', {
+      this.authClient.send(SUBSCRIBE_TO_WORKOUT, {
         userId: userId,
         workoutId: workoutId,
       }),
