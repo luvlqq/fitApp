@@ -2,12 +2,13 @@ import { Controller } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtTokensService } from './jwt.tokens.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
+import { AuthDto } from './dto/auth.dto';
 import {
   LOGIN,
+  REFRESH,
   REGISTER,
-} from 'apps/api-gateway/src/modules/auth/auth/constants';
-import { AuthDto } from './dto/auth.dto';
-import { REFRESH, SIGNOUT } from './constants';
+  SIGNOUT,
+} from '@app/common/messages/auth/auth/constants';
 
 @Controller('auth')
 export class AuthController {
