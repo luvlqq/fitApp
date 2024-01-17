@@ -23,6 +23,7 @@ import {
   getSchemaPath,
 } from '@nestjs/swagger';
 import { DtoBadRequest, DtoUnauthorized } from '@app/common/swagger/responses';
+import { Throttle } from '@nestjs/throttler';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -33,6 +34,7 @@ export class AuthGatewayController {
   ) {}
 
   @Public()
+  @Throttle({ default: { limit: 3, ttl: 1000 } })
   @Post('login')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Log in as a user to your account' })
@@ -69,6 +71,7 @@ export class AuthGatewayController {
   }
 
   @Public()
+  @Throttle({ default: { limit: 3, ttl: 1000 } })
   @Post('register')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Register user account' })
@@ -103,6 +106,7 @@ export class AuthGatewayController {
   }
 
   @Public()
+  @Throttle({ default: { limit: 3, ttl: 1000 } })
   @UseGuards(RtGuard)
   @Post('refresh')
   @HttpCode(HttpStatus.CREATED)
