@@ -13,6 +13,7 @@ async function bootstrap() {
   app.enableShutdownHooks();
   app.useGlobalPipes(new ValidationPipe());
   app.use(cookieParser());
+  app.enableCors({ origin: true, credentials: true });
 
   process.on('SIGINT', async () => {
     Logger.log('Server close by user');

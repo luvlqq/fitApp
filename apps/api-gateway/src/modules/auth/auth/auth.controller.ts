@@ -5,12 +5,14 @@ import {
   HttpStatus,
   Inject,
   Post,
+  Get,
   Res,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { AuthGatewayService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { Public } from './decorators/public.decorator';
 import { GetCurrentUserId } from './decorators/get.current.userId.decorator';
 import { RtGuard } from './guards';
@@ -115,5 +117,15 @@ export class AuthGatewayController {
     @GetCurrentUser('refreshToken') refreshToken: string,
   ): Promise<void> {
     await this.jwtTokenService.refreshTokens(userId, refreshToken);
+  }
+
+  @Public()
+  @Get('check')
+  public async checkCookie(@Req() req: Request, @Res() res: Response) {
+    if (req.cookies.accessToken) {
+      res.json({ isAuthenticated: true });
+    } else {
+      res.json({ isAuthenticated: false });
+    }
   }
 }
