@@ -2,47 +2,47 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateMealDto {
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal name', nullable: false })
   @IsString()
   @IsNotEmpty()
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal photo', nullable: false })
   @IsString()
   @IsNotEmpty()
   photo: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal description', nullable: false })
   @IsString()
   @IsNotEmpty()
   description: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal recipe', nullable: false })
   @IsString()
   @IsNotEmpty()
   recipe: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal time to prepare', nullable: false })
   @IsString()
   @IsNotEmpty()
   timeToPrepare: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal proteins', nullable: false })
   @IsNumber()
   @IsNotEmpty()
   proteins: number;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal fats', nullable: false })
   @IsNumber()
   @IsNotEmpty()
   fats: number;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal carbs', nullable: false })
   @IsNumber()
   @IsNotEmpty()
   carbs: number;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Meal kkal', nullable: false })
   @IsNumber()
   @IsNotEmpty()
   kkal: number;

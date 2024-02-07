@@ -2,19 +2,19 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class CreateExerciseDto {
-  @ApiProperty()
+  @ApiProperty({ description: 'Exercise name', nullable: false })
   @IsString()
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Exercise description', nullable: false })
   @IsString()
   description: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Exercise video', nullable: false })
   @IsString()
   video: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Exercise group of muscule', nullable: false })
   @IsString()
   gropuOfMuscules: string;
 }
