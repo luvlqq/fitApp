@@ -1,9 +1,10 @@
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { PrismaModule } from '@app/db';
 import { Test, TestingModule } from '@nestjs/testing';
+import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
+
 import { WorkoutsMicroserviceService } from '../workout.service';
 import { WorkoutsRepository } from '../workouts.repository';
-import { PrismaModule } from '@app/db';
-import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
-import { WinstonLoggerModule } from '@app/common/log/logger.module';
 
 describe('Workouts service', () => {
   let service: WorkoutsMicroserviceService;

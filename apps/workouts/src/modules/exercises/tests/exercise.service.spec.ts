@@ -1,10 +1,11 @@
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { PrismaModule } from '@app/db';
 import { Test, TestingModule } from '@nestjs/testing';
+import { groupOfMusculesENUM } from '@prisma/client';
+
+import { CreateExerciseDto } from '../dto/craete.exercise.dto';
 import { ExerciseRepository } from '../exercise.repository';
 import { ExerciseMicroserviceService } from '../exercise.service';
-import { PrismaModule } from '@app/db';
-import { CreateExerciseDto } from '../dto/craete.exercise.dto';
-import { groupOfMusculesENUM } from '@prisma/client';
-import { WinstonLoggerModule } from '@app/common/log/logger.module';
 
 describe('ExerciseService', () => {
   let service: ExerciseMicroserviceService;

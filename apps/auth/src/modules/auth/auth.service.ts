@@ -1,3 +1,5 @@
+import { Constants } from '@app/common/constants/constants';
+import { PrismaService } from '@app/db';
 import {
   BadRequestException,
   Inject,
@@ -5,16 +7,15 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { AuthRepository } from './auth.repository';
-import { PrismaService } from '@app/db';
 import { JwtService } from '@nestjs/jwt';
-import { JwtTokensService } from './jwt.tokens.service';
-import { AuthDto } from './dto/auth.dto';
 import * as bcrypt from 'bcrypt';
-import { Constants } from '@app/common/constants/constants';
-import { MailerMicroserviceService } from '../users/mailer/mailer.service';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
+
+import { MailerMicroserviceService } from '../users/mailer/mailer.service';
+import { AuthRepository } from './auth.repository';
+import { AuthDto } from './dto/auth.dto';
+import { JwtTokensService } from './jwt.tokens.service';
 
 @Injectable()
 export class AuthService {

@@ -1,6 +1,7 @@
 import { Controller } from '@nestjs/common';
-import { UploadVideoMicroserviceService } from './uploadvideo.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
+
+import { UploadVideoMicroserviceService } from './uploadvideo.service';
 
 @Controller()
 export class UploadVideoMicroserviceController {

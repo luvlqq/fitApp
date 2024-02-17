@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
-import { MealsController } from './meals.controller';
-import { MealsMicroserviceService } from './meals.service';
-import { ConfigModule } from '@nestjs/config';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
-import { MealsMicroserviceRepository } from './meals.repository';
 import { PrismaModule } from '@app/db';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+
+import { MealsController } from './meals.controller';
+import { MealsMicroserviceRepository } from './meals.repository';
+import { MealsMicroserviceService } from './meals.service';
 
 @Module({
   imports: [

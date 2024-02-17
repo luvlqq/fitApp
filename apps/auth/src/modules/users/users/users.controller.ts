@@ -1,8 +1,3 @@
-import { Controller } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
-import { UsersMicroserviceService } from './users.service';
-import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
-import { UpdateHealthData } from './dto/update.healthData.dto';
 import {
   ADD_WORKOUT_TO_FAVORITE,
   HEALTH_DATA,
@@ -10,6 +5,12 @@ import {
   SUBSCRIBE_TO_WORKOUT,
   UPDATE_HEALTH_DATA,
 } from '@app/common/messages/auth/users/users';
+import { Controller } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
+import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
+
+import { UpdateHealthData } from './dto/update.healthData.dto';
+import { UsersMicroserviceService } from './users.service';
 
 @Controller()
 export class UsersMicroserviceController {

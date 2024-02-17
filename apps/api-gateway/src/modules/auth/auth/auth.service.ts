@@ -1,13 +1,14 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { AuthDto } from './dto/auth.dto';
-import { ClientProxy } from '@nestjs/microservices';
-import { lastValueFrom } from 'rxjs';
 import {
   LOGIN,
   REFRESH,
   REGISTER,
   SIGNOUT,
 } from '@app/common/messages/auth/auth/constants';
+import { Inject, Injectable } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
+
+import { AuthDto } from './dto/auth.dto';
 
 @Injectable()
 export class AuthGatewayService {

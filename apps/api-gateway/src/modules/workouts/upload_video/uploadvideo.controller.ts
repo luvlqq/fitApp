@@ -8,9 +8,10 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { UploadVideoGatewayService } from './uploadvideo.service';
-import { ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiTags } from '@nestjs/swagger';
+
+import { UploadVideoGatewayService } from './uploadvideo.service';
 
 @ApiTags('Upload')
 @Controller('upload-video')

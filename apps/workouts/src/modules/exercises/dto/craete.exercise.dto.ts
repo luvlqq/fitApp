@@ -1,5 +1,5 @@
-import { IsString } from 'class-validator';
 import { groupOfMusculesENUM } from '@prisma/client';
+import { IsString } from 'class-validator';
 
 export class CreateExerciseDto {
   @IsString()

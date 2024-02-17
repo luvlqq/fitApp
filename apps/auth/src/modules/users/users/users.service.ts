@@ -1,9 +1,10 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { UsersMicroserviceRepository } from './users.repository';
 import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
-import { UpdateHealthData } from './dto/update.healthData.dto';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
+
+import { UpdateHealthData } from './dto/update.healthData.dto';
+import { UsersMicroserviceRepository } from './users.repository';
 
 @Injectable()
 export class UsersMicroserviceService {

@@ -1,8 +1,9 @@
-import { NestFactory } from '@nestjs/core';
-import { WorkoutsMicroserviceModule } from './modules/workouts.module';
-import { Logger } from '@nestjs/common';
 import { RmqService } from '@app/common/rabbit/rabbit.service';
+import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import { RmqOptions } from '@nestjs/microservices';
+
+import { WorkoutsMicroserviceModule } from './modules/workouts.module';
 
 async function bootstrap() {
   const logger = new Logger();

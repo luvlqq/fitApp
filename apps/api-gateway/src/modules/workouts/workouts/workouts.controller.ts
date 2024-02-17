@@ -8,11 +8,12 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { WorkoutsGatewayService } from './workouts.service';
+import { ApiTags } from '@nestjs/swagger';
+
+import { GetCurrentUserId } from '../../auth/auth/decorators';
 import { CreateWorkoutsDto } from './dto/create.workouts.dto';
 import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
-import { ApiTags } from '@nestjs/swagger';
-import { GetCurrentUserId } from '../../auth/auth/decorators';
+import { WorkoutsGatewayService } from './workouts.service';
 
 @ApiTags('Workouts')
 @Controller('workouts')

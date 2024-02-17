@@ -1,8 +1,3 @@
-import { Controller } from '@nestjs/common';
-import { WorkoutsMicroserviceService } from './workout.service';
-import { MessagePattern, Payload } from '@nestjs/microservices';
-import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
-import { UpdateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/update.workouts.dto';
 import {
   CREATE_WORKOUT,
   CREATE_WORKOUT_BY_EXERCISES,
@@ -10,6 +5,12 @@ import {
   SHOW_ALL_WORKOUTS,
   UPDATE_WORKOUT,
 } from '@app/common/messages/workouts/workouts';
+import { Controller } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
+import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
+import { UpdateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/update.workouts.dto';
+
+import { WorkoutsMicroserviceService } from './workout.service';
 
 @Controller()
 export class WorkoutsController {
