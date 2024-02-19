@@ -2,12 +2,13 @@ import { RmqModule } from '@app/common/rabbit/rabbit.module';
 import { PrismaModule } from '@app/db';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { UploadVideoMicroserviceController } from './uploadvideo.controller';
-import { UploadVideoMicroserviceService } from './uploadvideo.service';
-import { UploadVideoRepository } from './uploadvideo.repository';
 import { GoogleDriveModule } from 'nestjs-googledrive-upload';
+
 import * as Config from './config.json';
 import { FolderID } from './constants';
+import { UploadVideoMicroserviceController } from './uploadvideo.controller';
+import { UploadVideoRepository } from './uploadvideo.repository';
+import { UploadVideoMicroserviceService } from './uploadvideo.service';
 
 @Module({
   imports: [

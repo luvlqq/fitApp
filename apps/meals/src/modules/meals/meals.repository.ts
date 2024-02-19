@@ -1,5 +1,6 @@
 import { PrismaService } from '@app/db';
 import { Injectable } from '@nestjs/common';
+
 import { CreateMealDto } from './dto/create.meals.dto';
 import { UpdateMealsDto } from './dto/update.meals.dto';
 
@@ -8,7 +9,7 @@ export class MealsMicroserviceRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   public async createMeals(dto: CreateMealDto) {
-    return await this.prisma.meals.create({ data: { ...dto } });
+    return this.prisma.meals.create({ data: { ...dto } });
   }
 
   public async getAllMeals() {

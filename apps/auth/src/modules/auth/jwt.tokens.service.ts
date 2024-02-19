@@ -1,15 +1,16 @@
-import { ConfigService } from '@nestjs/config';
-import { JwtService } from '@nestjs/jwt';
-import { AuthRepository } from './auth.repository';
+import { Constants } from '@app/common/constants/constants';
 import {
   BadRequestException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 import { Tokens } from 'apps/api-gateway/src/modules/auth/auth/types';
-import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
-import { Constants } from '@app/common/constants/constants';
+import { Response } from 'express';
+
+import { AuthRepository } from './auth.repository';
 
 @Injectable()
 export class JwtTokensService {

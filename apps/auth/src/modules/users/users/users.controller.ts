@@ -1,9 +1,16 @@
+import {
+  ADD_WORKOUT_TO_FAVORITE,
+  HEALTH_DATA,
+  SHOW_USER_INFO,
+  SUBSCRIBE_TO_WORKOUT,
+  UPDATE_HEALTH_DATA,
+} from '@app/common/messages/auth/users/users';
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { UsersMicroserviceService } from './users.service';
-import { SHOW_USER_INFO } from 'apps/api-gateway/src/modules/auth/users/users/constants';
 import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
+
 import { UpdateHealthData } from './dto/update.healthData.dto';
+import { UsersMicroserviceService } from './users.service';
 
 @Controller()
 export class UsersMicroserviceController {
@@ -14,7 +21,7 @@ export class UsersMicroserviceController {
     return this.usersService.getUserInfo(userId);
   }
 
-  @MessagePattern('HEALTH_DATA')
+  @MessagePattern(HEALTH_DATA)
   public async createHealthData(
     @Payload('userId') userId: number,
     @Payload('dto') dto: HealthDataDto,
@@ -22,7 +29,7 @@ export class UsersMicroserviceController {
     return this.usersService.createHealthData(userId, dto);
   }
 
-  @MessagePattern('UPDATE_HEALTH_DATA')
+  @MessagePattern(UPDATE_HEALTH_DATA)
   public async updateHealthData(
     @Payload('userId') userId: number,
     @Payload('dto') dto: UpdateHealthData,
@@ -30,7 +37,7 @@ export class UsersMicroserviceController {
     return this.usersService.updateHealthData(userId, dto);
   }
 
-  @MessagePattern('ADD_WORKOUT_TO_FAVORITE')
+  @MessagePattern(ADD_WORKOUT_TO_FAVORITE)
   public async addWorkoutToFavourites(
     @Payload('userId') userId: number,
     @Payload('workoutId') workoutId: number,
@@ -38,7 +45,7 @@ export class UsersMicroserviceController {
     return this.usersService.addWorkoutToFavorite(userId, workoutId);
   }
 
-  @MessagePattern('SUBSCRIBE_TO_WORKOUT')
+  @MessagePattern(SUBSCRIBE_TO_WORKOUT)
   public async subscribeToWorkout(
     @Payload('userId') userId: number,
     @Payload('workoutId') workoutId: number,

@@ -1,9 +1,10 @@
 import { Body, Controller, Get, ParseIntPipe, Post } from '@nestjs/common';
-import { UsersGatewayService } from './users.service';
-import { GetCurrentUserId } from '../../auth/decorators';
 import { ApiTags } from '@nestjs/swagger';
+
+import { GetCurrentUserId } from '../../auth/decorators';
 import { HealthDataDto } from './dto/healthdata.dto';
 import { UpdateHealthData } from './dto/update.healthData.dto';
+import { UsersGatewayService } from './users.service';
 
 @ApiTags('Users')
 @Controller('users')

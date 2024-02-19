@@ -1,6 +1,7 @@
 import { PrismaService } from '@app/db';
 import { Injectable } from '@nestjs/common';
 import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
+
 import { UpdateHealthData } from './dto/update.healthData.dto';
 
 @Injectable()

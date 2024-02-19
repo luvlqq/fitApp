@@ -7,10 +7,11 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { CreateMealDto } from './dto/create.meals.dto';
-import { MealsGatewayService } from './meals.service';
-import { UpdateMealsDto } from './dto/update.meals.dto';
 import { ApiTags } from '@nestjs/swagger';
+
+import { CreateMealDto } from './dto/create.meals.dto';
+import { UpdateMealsDto } from './dto/update.meals.dto';
+import { MealsGatewayService } from './meals.service';
 
 @ApiTags('Meals')
 @Controller('meals')

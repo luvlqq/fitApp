@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { UploadVideoRepository } from './uploadvideo.repository';
-import { GoogleDriveService } from 'nestjs-googledrive-upload';
 import { Exercise } from '@prisma/client';
+import { GoogleDriveService } from 'nestjs-googledrive-upload';
+
+import { UploadVideoRepository } from './uploadvideo.repository';
 
 @Injectable()
 export class UploadVideoMicroserviceService {

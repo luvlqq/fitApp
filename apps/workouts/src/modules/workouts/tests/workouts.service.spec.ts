@@ -1,20 +1,24 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { WorkoutsService } from '../workout.service';
-import { WorkoutsRepository } from '../workouts.repository';
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
 import { PrismaModule } from '@app/db';
+import { Test, TestingModule } from '@nestjs/testing';
 import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
 
+import { WorkoutsMicroserviceService } from '../workout.service';
+import { WorkoutsRepository } from '../workouts.repository';
+
 describe('Workouts service', () => {
-  let service: WorkoutsService;
+  let service: WorkoutsMicroserviceService;
   let repository: WorkoutsRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WorkoutsService, WorkoutsRepository],
-      imports: [PrismaModule],
+      providers: [WorkoutsMicroserviceService, WorkoutsRepository],
+      imports: [PrismaModule, WinstonLoggerModule],
     }).compile();
 
-    service = module.get<WorkoutsService>(WorkoutsService);
+    service = module.get<WorkoutsMicroserviceService>(
+      WorkoutsMicroserviceService,
+    );
     repository = module.get<WorkoutsRepository>(WorkoutsRepository);
   });
 

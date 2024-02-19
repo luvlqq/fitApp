@@ -1,7 +1,8 @@
 import { Controller, Get, Patch, Post } from '@nestjs/common';
-import { AppleHealthGatewayService } from './appleHealth.service';
-import { GetCurrentUserId } from '../../auth/decorators';
 import { ApiTags } from '@nestjs/swagger';
+
+import { GetCurrentUserId } from '../../auth/decorators';
+import { AppleHealthGatewayService } from './appleHealth.service';
 
 @ApiTags('Apple Health')
 @Controller('appleHealth')

@@ -1,8 +1,9 @@
-import { NestFactory } from '@nestjs/core';
-import { AuthMicroserviceModule } from './modules/auth.module';
 import { RmqService } from '@app/common/rabbit/rabbit.service';
 import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import { RmqOptions } from '@nestjs/microservices';
+
+import { AuthMicroserviceModule } from './modules/auth.module';
 
 async function bootstrap() {
   const logger = new Logger();
