@@ -1,4 +1,5 @@
 import { Constants } from '@app/common/constants/constants';
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import { PrismaService } from '@app/db';
 import {
   BadRequestException,
@@ -14,7 +15,6 @@ import { Logger } from 'winston';
 
 import { MailerMicroserviceService } from '../users/mailer/mailer.service';
 import { AuthRepository } from './auth.repository';
-import { AuthDto } from './dto/auth.dto';
 import { JwtTokensService } from './jwt.tokens.service';
 
 @Injectable()

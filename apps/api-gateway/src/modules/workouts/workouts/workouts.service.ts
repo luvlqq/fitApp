@@ -5,12 +5,13 @@ import {
   SHOW_ALL_WORKOUTS,
   UPDATE_WORKOUT,
 } from '@app/common/messages/workouts/workouts';
+import {
+  CreateWorkoutsDto,
+  UpdateWorkoutsDto,
+} from '@app/contracts/dto/workouts.dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
-
-import { CreateWorkoutsDto } from './dto/create.workouts.dto';
-import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
 
 @Injectable()
 export class WorkoutsGatewayService {

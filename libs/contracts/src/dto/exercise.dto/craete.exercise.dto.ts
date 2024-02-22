@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { groupOfMusculesENUM } from '@prisma/client';
 import { IsString } from 'class-validator';
 
 export class CreateExerciseDto {
@@ -16,5 +17,5 @@ export class CreateExerciseDto {
 
   @ApiProperty({ description: 'Exercise group of muscule', nullable: false })
   @IsString()
-  gropuOfMuscules: string;
+  gropuOfMuscules: groupOfMusculesENUM;
 }

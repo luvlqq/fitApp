@@ -1,13 +1,12 @@
 import { DtoBadRequest, DtoUnauthorized } from '@app/common/swagger/responses';
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import {
   Body,
   Controller,
-  Get,
   HttpCode,
   HttpStatus,
   Inject,
   Post,
-  Req,
   Res,
   UseGuards,
 } from '@nestjs/common';
@@ -19,13 +18,10 @@ import {
 } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
 import { JwtTokensService } from 'apps/auth/src/modules/auth/jwt.tokens.service';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
 import { AuthGatewayService } from './auth.service';
-import { GetCurrentUser } from './decorators/get.current.user.decorator';
-import { GetCurrentUserId } from './decorators/get.current.userId.decorator';
-import { Public } from './decorators/public.decorator';
-import { AuthDto } from './dto/auth.dto';
+import { GetCurrentUser, GetCurrentUserId, Public } from './decorators';
 import { RtGuard } from './guards';
 
 @ApiTags('Auth')

@@ -1,7 +1,7 @@
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import { PrismaService } from '@app/db';
 import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { AuthDto } from 'apps/api-gateway/src/modules/auth/auth/dto/auth.dto';
 
 @Injectable()
 export class AuthRepository {

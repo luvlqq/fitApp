@@ -4,11 +4,11 @@ import {
   REGISTER,
   SIGNOUT,
 } from '@app/common/messages/auth/auth/constants';
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto/auth.dto';
 import { JwtTokensService } from './jwt.tokens.service';
 
 @Controller('auth')
