@@ -12,7 +12,7 @@ export class UsersMicroserviceRepository {
         Workouts: true,
         HealthData: true,
         FavouriteWorkouts: true,
-        Achivments: true,
+        Achievements: true,
         Goals: true,
         NutrionPlans: true,
       },
@@ -24,13 +24,13 @@ export class UsersMicroserviceRepository {
   }
 
   public async findUserHealthData(userId: number) {
-    return await this.prisma.healthData.findUnique({
+    return this.prisma.healthData.findUnique({
       where: { userId: userId },
     });
   }
 
   public async updateHealthData(userId: number, dto: UpdateHealthData) {
-    return await this.prisma.healthData.update({
+    return this.prisma.healthData.update({
       where: { userId: userId },
       data: { ...dto },
     });

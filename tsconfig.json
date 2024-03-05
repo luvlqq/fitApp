@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "target": "es2017",
+    "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
@@ -36,6 +36,9 @@
       ],
       "@app/contracts/*": [
         "libs/contracts/src/*"
+      ],
+      "@auth/strategies": [
+        "apps/api-gateway/src/modules/auth/auth/strategies/index.ts"
       ]
     }
   }

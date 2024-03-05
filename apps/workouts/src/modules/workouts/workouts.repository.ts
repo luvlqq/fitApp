@@ -11,7 +11,7 @@ export class WorkoutsRepository {
 
   public async getAllWorkouts() {
     return this.prisma.workouts.findMany({
-      include: { Exercise: true, user: true },
+      include: { Exercises: true, user: true },
     });
   }
 
@@ -28,8 +28,7 @@ export class WorkoutsRepository {
         name: dto.name,
         description: dto.description,
         duration: dto.duration,
-        timeOfExercise: dto.timeOfExercise,
-        Exercise: {
+        Exercises: {
           connect: exerciseId.map((id) => ({ id })),
         },
       },

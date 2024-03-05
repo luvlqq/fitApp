@@ -14,13 +14,9 @@ export class CreateWorkoutsDto {
 
   @ApiProperty({ description: 'Workout duration', nullable: false })
   @IsNotEmpty()
-  duration: Date;
+  duration: number;
 
-  @ApiProperty({ description: 'Workout time of exercise', nullable: false })
-  @IsNotEmpty()
-  timeOfExercise: Date;
-
-  @ApiProperty({ description: "Workout exercies id's", nullable: false })
+  @ApiProperty({ description: "Workout exercises id's", nullable: false })
   @IsArray()
   exerciseId?: number[];
 }

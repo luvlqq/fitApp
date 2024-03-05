@@ -9,7 +9,7 @@ import { AtGuard } from './modules/auth/auth/guards';
 import { AppleHealthGatewayModule } from './modules/auth/users/appleHealth/appleHealth.module';
 import { UsersGatewayModule } from './modules/auth/users/users/users.module';
 import { MealsGatewayModule } from './modules/meals/meals/meals.module';
-import { NutrionGatewayModule } from './modules/meals/nutrionPlans/nutrion.module';
+import { NutritionGatewayModule } from './modules/meals/nutrionPlans/nutrion.module';
 import { ExerciseGatewayModule } from './modules/workouts/exercises/exercise.module';
 import { UploadVideoGatewayModule } from './modules/workouts/upload_video/uploadvideo.module';
 import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.module';
@@ -49,7 +49,7 @@ import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.modu
     MealsGatewayModule,
     WorkoutsGatewayModule,
     ExerciseGatewayModule,
-    NutrionGatewayModule,
+    NutritionGatewayModule,
   ],
   providers: [
     AtGuard,

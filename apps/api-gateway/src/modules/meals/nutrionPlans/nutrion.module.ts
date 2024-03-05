@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 
 import { NutritionGatewayController } from './nutrion.controller';
-import { NutrionGatewayService } from './nutrion.service';
+import { NutritionGatewayService } from './nutrion.service';
 
 @Module({
   imports: [],
   controllers: [NutritionGatewayController],
-  providers: [NutrionGatewayService],
+  providers: [NutritionGatewayService],
 })
-export class NutrionGatewayModule {}
+export class NutritionGatewayModule {}

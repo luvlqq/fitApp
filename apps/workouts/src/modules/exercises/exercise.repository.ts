@@ -1,7 +1,9 @@
+import {
+  CreateExerciseDto,
+  UpdateExerciseDto,
+} from '@app/contracts/dto/exercise.dto';
 import { PrismaService } from '@app/db';
 import { Injectable } from '@nestjs/common';
-import { CreateExerciseDto, UpdateExerciseDto } from "@app/contracts/dto/exercise.dto";
-
 
 @Injectable()
 export class ExerciseRepository {

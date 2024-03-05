@@ -13,7 +13,10 @@ export class AuthRepository {
     });
   }
 
-  public async createNewUser(dto: AuthDto, hashedPassword): Promise<User> {
+  public async createNewUser(
+    dto: AuthDto,
+    hashedPassword: string,
+  ): Promise<User> {
     return this.prisma.user.create({
       data: { email: dto.email, password: hashedPassword },
     });

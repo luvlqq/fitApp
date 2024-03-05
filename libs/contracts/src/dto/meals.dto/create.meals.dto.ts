@@ -25,7 +25,7 @@ export class CreateMealDto {
   @ApiProperty({ description: 'Meal time to prepare', nullable: false })
   @IsString()
   @IsNotEmpty()
-  timeToPrepare: string;
+  timeToPrepare: number;
 
   @ApiProperty({ description: 'Meal proteins', nullable: false })
   @IsNumber()
