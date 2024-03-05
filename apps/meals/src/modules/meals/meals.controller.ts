@@ -4,11 +4,10 @@ import {
   DELETEMEALS,
   UPDATEMEALS,
 } from '@app/common/messages/meals/meals';
+import { CreateMealDto, UpdateMealsDto } from '@app/contracts/dto/meals.dto';
 import { Controller, ParseIntPipe } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
-import { CreateMealDto } from './dto/create.meals.dto';
-import { UpdateMealsDto } from './dto/update.meals.dto';
 import { MealsMicroserviceService } from './meals.service';
 
 @Controller()

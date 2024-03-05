@@ -9,21 +9,10 @@ import { AtGuard } from './modules/auth/auth/guards';
 import { AppleHealthGatewayModule } from './modules/auth/users/appleHealth/appleHealth.module';
 import { UsersGatewayModule } from './modules/auth/users/users/users.module';
 import { MealsGatewayModule } from './modules/meals/meals/meals.module';
+import { NutritionGatewayModule } from './modules/meals/nutrionPlans/nutrion.module';
 import { ExerciseGatewayModule } from './modules/workouts/exercises/exercise.module';
 import { UploadVideoGatewayModule } from './modules/workouts/upload_video/uploadvideo.module';
 import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.module';
-
-// const DEFAULT_ADMIN = {
-//   email: 'admin@example.com',
-//   password: 'password',
-// };
-
-// const authenticate = async (email: string, password: string) => {
-//   if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
-//     return Promise.resolve(DEFAULT_ADMIN);
-//   }
-//   return null;
-// };
 
 @Module({
   imports: [
@@ -53,26 +42,6 @@ import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.modu
       envFilePath: '.env',
       isGlobal: true,
     }),
-    // import('@adminjs/nestjs').then(({ AdminModule }) =>
-    //   AdminModule.createAdminAsync({
-    //     useFactory: () => ({
-    //       adminJsOptions: {
-    //         rootPath: '/admin',
-    //         resources: [],
-    //       },
-    //       auth: {
-    //         authenticate,
-    //         cookieName: 'adminjs',
-    //         cookiePassword: 'secret',
-    //       },
-    //       sessionOptions: {
-    //         resave: true,
-    //         saveUninitialized: true,
-    //         secret: 'secret',
-    //       },
-    //     }),
-    //   }),
-    // ),
     AuthGatewayModule,
     UsersGatewayModule,
     AppleHealthGatewayModule,
@@ -80,6 +49,7 @@ import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.modu
     MealsGatewayModule,
     WorkoutsGatewayModule,
     ExerciseGatewayModule,
+    NutritionGatewayModule,
   ],
   providers: [
     AtGuard,

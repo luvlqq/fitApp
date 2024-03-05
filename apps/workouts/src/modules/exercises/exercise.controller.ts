@@ -4,11 +4,13 @@ import {
   GET_ALL_EXERCISES,
   UPDATE_EXERCISE,
 } from '@app/common/messages/workouts/exercises';
+import {
+  CreateExerciseDto,
+  UpdateExerciseDto,
+} from '@app/contracts/dto/exercise.dto';
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
-import { CreateExerciseDto } from './dto/craete.exercise.dto';
-import { UpdateExerciseDto } from './dto/update.exercise.dto';
 import { ExerciseMicroserviceService } from './exercise.service';
 
 @Controller()

@@ -4,12 +4,10 @@ import {
   DELETEMEALS,
   UPDATEMEALS,
 } from '@app/common/messages/meals/meals';
+import { CreateMealDto, UpdateMealsDto } from '@app/contracts/dto/meals.dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
-
-import { CreateMealDto } from './dto/create.meals.dto';
-import { UpdateMealsDto } from './dto/update.meals.dto';
 
 @Injectable()
 export class MealsGatewayService {

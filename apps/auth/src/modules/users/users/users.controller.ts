@@ -5,11 +5,10 @@ import {
   SUBSCRIBE_TO_WORKOUT,
   UPDATE_HEALTH_DATA,
 } from '@app/common/messages/auth/users/users';
+import { HealthDataDto, UpdateHealthData } from '@app/contracts/dto/users.dto';
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
 
-import { UpdateHealthData } from './dto/update.healthData.dto';
 import { UsersMicroserviceService } from './users.service';
 
 @Controller()

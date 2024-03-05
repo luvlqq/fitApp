@@ -1,4 +1,8 @@
 import {
+  CreateWorkoutsDto,
+  UpdateWorkoutsDto,
+} from '@app/contracts/dto/workouts.dto';
+import {
   Body,
   Controller,
   Delete,
@@ -11,8 +15,6 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 
 import { GetCurrentUserId } from '../../auth/auth/decorators';
-import { CreateWorkoutsDto } from './dto/create.workouts.dto';
-import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
 import { WorkoutsGatewayService } from './workouts.service';
 
 @ApiTags('Workouts')

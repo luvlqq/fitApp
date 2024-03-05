@@ -1,3 +1,4 @@
+import { CreateMealDto, UpdateMealsDto } from '@app/contracts/dto/meals.dto';
 import {
   Body,
   Controller,
@@ -9,8 +10,6 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
-import { CreateMealDto } from './dto/create.meals.dto';
-import { UpdateMealsDto } from './dto/update.meals.dto';
 import { MealsGatewayService } from './meals.service';
 
 @ApiTags('Meals')

@@ -4,11 +4,10 @@ import {
   REGISTER,
   SIGNOUT,
 } from '@app/common/messages/auth/auth/constants';
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
-
-import { AuthDto } from './dto/auth.dto';
 
 @Injectable()
 export class AuthGatewayService {

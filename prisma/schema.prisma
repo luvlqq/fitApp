@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
@@ -17,10 +17,11 @@ model User {
   password          String
   hashRt            String?
   role              Role                @default(User)
+  createdAt         DateTime            @default(now())
   Workouts          Workouts[]
   HealthData        HealthData?
   FavouriteWorkouts FavouriteWorkouts[]
-  Achivments        Achivments[]
+  Achievements      Achievements[]
   Goals             Goals[]
   NutrionPlans      NutrionPlans[]
 }
@@ -29,11 +30,10 @@ model Workouts {
   id                Int                 @unique @default(autoincrement())
   name              String
   description       String
-  duration          DateTime
-  timeOfExercise    DateTime
+  duration          Int
   user              User?               @relation(fields: [userId], references: [id])
   userId            Int?
-  Exercise          Exercise[]
+  Exercises         Exercise[]
   FavouriteWorkouts FavouriteWorkouts[]
 }
 
@@ -42,9 +42,11 @@ model Exercise {
   name            String
   description     String
   video           String
-  workout         Workouts?            @relation(fields: [workoutId], references: [id])
+  duration        Int
+  workout         Workouts?           @relation(fields: [workoutId], references: [id])
   workoutId       Int?
-  gropuOfMuscules groupOfMusculesENUM
+  difficultyLevel DifficultyLevels
+  groupOfMuscles  groupOfMusculesENUM
 }
 
 model FavouriteWorkouts {
@@ -56,12 +58,15 @@ model FavouriteWorkouts {
 }
 
 model HealthData {
-  id     Int   @unique @default(autoincrement())
-  weight Float
-  height Float
-  age    Int
-  user   User  @relation(fields: [userId], references: [id])
-  userId Int   @unique
+  id           Int          @unique @default(autoincrement())
+  gender       Gender
+  weight       Float
+  height       Float
+  dateOfBirth  DateTime
+  primaryGoal  MainUserGoal
+  fitnessLevel FitnessLevel
+  user         User         @relation(fields: [userId], references: [id])
+  userId       Int          @unique
 }
 
 model NutrionPlans {
@@ -72,6 +77,7 @@ model NutrionPlans {
   fats        Float
   carbs       Float
   kkal        Float
+  isCustom    Boolean
   Meals       Meals[]
   User        User?   @relation(fields: [userId], references: [id])
   userId      Int?
@@ -83,13 +89,13 @@ model Meals {
   photo         String
   description   String
   recipe        String
-  timeToPrepare String
+  timeToPrepare Int
   proteins      Float
   fats          Float
   carbs         Float
   kkal          Float
-  nutrion       NutrionPlans? @relation(fields: [nutrionId], references: [id])
-  nutrionId     Int?
+  nutrition     NutrionPlans? @relation(fields: [nutritionId], references: [id])
+  nutritionId   Int?
 }
 
 model Goals {
@@ -100,14 +106,13 @@ model Goals {
   weight        Float
 }
 
-model Achivments {
+model Achievements {
   id            Int      @unique @default(autoincrement())
   name          String
   description   String
   dateOfCollect DateTime @default(now())
-
-  User   User? @relation(fields: [userId], references: [id])
-  userId Int?
+  user          User?    @relation(fields: [userId], references: [id])
+  userId        Int?
 }
 
 enum groupOfMusculesENUM {
@@ -126,4 +131,32 @@ enum groupOfMusculesENUM {
 enum Role {
   Admin
   User
+}
+
+enum Gender {
+  Male
+  Female
+}
+
+enum MainUserGoal {
+  BuildMuscule
+  EatBetter
+  Increase_Endurance
+  Improve_Fitness
+  Burn_Fat
+  Relieve_Stress
+}
+
+enum FitnessLevel {
+  Beginner
+  Low
+  Medium
+  Advanced
+}
+
+enum DifficultyLevels {
+  Easy
+  Medium
+  Hard
+  Light_Weitgh_Baby
 }
