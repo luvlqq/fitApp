@@ -1,9 +1,9 @@
 import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { CreateExerciseDto } from '@app/contracts/dto/exercise.dto';
 import { PrismaModule } from '@app/db';
 import { Test, TestingModule } from '@nestjs/testing';
-import { groupOfMusculesENUM } from '@prisma/client';
+import { DifficultyLevels, groupOfMusculesENUM } from '@prisma/client';
 
-import { CreateExerciseDto } from '../dto/craete.exercise.dto';
 import { ExerciseRepository } from '../exercise.repository';
 import { ExerciseMicroserviceService } from '../exercise.service';
 
@@ -33,7 +33,9 @@ describe('ExerciseService', () => {
         name: 'Test Exercise',
         description: 'Test Description',
         video: 'Test Video',
-        gropuOfMuscules: groupOfMusculesENUM.Back,
+        duration: 123,
+        difficultyLevel: DifficultyLevels.Medium,
+        groupOfMuscles: groupOfMusculesENUM.Back,
       };
 
       const expectedExercise = {
@@ -41,8 +43,10 @@ describe('ExerciseService', () => {
         name: 'Test Exercise',
         description: 'Test Description',
         video: 'Test Video',
+        duration: 123,
         workoutId: 1,
-        gropuOfMuscules: groupOfMusculesENUM.Back,
+        difficultyLevel: DifficultyLevels.Medium,
+        groupOfMuscles: groupOfMusculesENUM.Back,
       };
 
       jest
