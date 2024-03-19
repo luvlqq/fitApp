@@ -1,6 +1,5 @@
 import { Constants } from '@app/common/constants/constants';
 import { AuthDto } from '@app/contracts/dto/auth.dto';
-import { PrismaService } from '@app/db';
 import {
   BadRequestException,
   Inject,
@@ -8,12 +7,10 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
 
-import { MailerMicroserviceService } from '../users/mailer/mailer.service';
 import { AuthRepository } from './auth.repository';
 import { JwtTokensService } from './jwt.tokens.service';
 
@@ -21,11 +18,8 @@ import { JwtTokensService } from './jwt.tokens.service';
 export class AuthService {
   constructor(
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
-    private readonly jwtService: JwtService,
     private readonly repository: AuthRepository,
     private readonly jwtTokenService: JwtTokensService,
-    private readonly prisma: PrismaService,
-    private readonly mailer: MailerMicroserviceService,
   ) {}
 
   public async register(dto: AuthDto) {

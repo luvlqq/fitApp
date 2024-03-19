@@ -23,7 +23,7 @@ export class MealsGatewayController {
   }
 
   @Post('create')
-  public async cteateMeal(@Body() dto: CreateMealDto) {
+  public async createMeal(@Body() dto: CreateMealDto) {
     return this.mealsService.createMeals(dto);
   }
 

@@ -1,7 +1,7 @@
 import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { CreateWorkoutsDto } from '@app/contracts/dto/workouts.dto';
 import { PrismaModule } from '@app/db';
 import { Test, TestingModule } from '@nestjs/testing';
-import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
 
 import { WorkoutsMicroserviceService } from '../workout.service';
 import { WorkoutsRepository } from '../workouts.repository';
@@ -31,8 +31,7 @@ describe('Workouts service', () => {
       const dto: CreateWorkoutsDto = {
         name: 'Test workout',
         description: 'test desc',
-        duration: new Date(),
-        timeOfExercise: new Date(),
+        duration: 12,
         exerciseId: [1],
       };
 
@@ -40,8 +39,7 @@ describe('Workouts service', () => {
         id: 1,
         name: 'Test workout',
         description: 'test desc',
-        duration: new Date(),
-        timeOfExercise: new Date(),
+        duration: 12,
         userId: 1,
       };
 
