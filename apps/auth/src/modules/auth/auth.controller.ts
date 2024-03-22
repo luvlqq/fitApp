@@ -1,9 +1,4 @@
-import {
-  LOGIN,
-  REFRESH,
-  REGISTER,
-  SIGNOUT,
-} from '@app/common/messages/auth/auth/constants';
+import { LOGIN, REFRESH, REGISTER, SIGNOUT } from '@app/common/messages';
 import { AuthDto } from '@app/contracts/dto/auth.dto';
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';

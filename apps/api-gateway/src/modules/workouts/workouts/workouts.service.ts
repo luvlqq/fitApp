@@ -4,7 +4,7 @@ import {
   DELETE_WORKOUT,
   SHOW_ALL_WORKOUTS,
   UPDATE_WORKOUT,
-} from '@app/common/messages/workouts/workouts';
+} from '@app/common/messages';
 import {
   CreateWorkoutsDto,
   UpdateWorkoutsDto,

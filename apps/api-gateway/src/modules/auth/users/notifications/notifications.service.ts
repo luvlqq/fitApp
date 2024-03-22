@@ -1,4 +1,4 @@
-import { SEND_NOTIFICATION } from '@app/common/messages/auth/users/notifications';
+import { SEND_NOTIFICATION } from '@app/common/messages';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';

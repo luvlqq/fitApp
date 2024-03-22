@@ -3,7 +3,7 @@ import {
   DELETE_EXERCISE,
   GET_ALL_EXERCISES,
   UPDATE_EXERCISE,
-} from '@app/common/messages/workouts/exercises';
+} from '@app/common/messages';
 import {
   CreateExerciseDto,
   UpdateExerciseDto,
