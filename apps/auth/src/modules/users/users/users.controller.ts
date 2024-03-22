@@ -4,7 +4,7 @@ import {
   SHOW_USER_INFO,
   SUBSCRIBE_TO_WORKOUT,
   UPDATE_HEALTH_DATA,
-} from '@app/common/messages/auth/users/users';
+} from '@app/common/messages';
 import { HealthDataDto, UpdateHealthData } from '@app/contracts/dto/users.dto';
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';

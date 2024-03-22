@@ -2,7 +2,7 @@ import {
   CREATE_USER_DATA,
   GET_USER_DATA,
   UPDATE_USER_DATA,
-} from '@app/common/messages/auth/users/appleHealth';
+} from '@app/common/messages';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';

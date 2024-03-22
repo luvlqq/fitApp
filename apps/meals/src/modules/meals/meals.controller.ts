@@ -3,7 +3,7 @@ import {
   CREATEMEALS,
   DELETEMEALS,
   UPDATEMEALS,
-} from '@app/common/messages/meals/meals';
+} from '@app/common/messages';
 import { CreateMealDto, UpdateMealsDto } from '@app/contracts/dto/meals.dto';
 import { Controller, ParseIntPipe } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
