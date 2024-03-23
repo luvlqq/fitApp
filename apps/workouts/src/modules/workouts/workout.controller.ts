@@ -2,6 +2,8 @@ import {
   CREATE_WORKOUT,
   CREATE_WORKOUT_BY_EXERCISES,
   DELETE_WORKOUT,
+  GENERATE_ALL_WORKOUTS_REPORT,
+  GENERATE_WORKOUT_REPORT,
   SHOW_ALL_WORKOUTS,
   UPDATE_WORKOUT,
 } from '@app/common/messages';
@@ -47,5 +49,15 @@ export class WorkoutsController {
   @MessagePattern(DELETE_WORKOUT)
   public async deleteWorkout(@Payload('id') id: number) {
     return this.workoutsService.deleteWorkout(id);
+  }
+
+  @MessagePattern(GENERATE_WORKOUT_REPORT)
+  public async generateWorkoutReport(@Payload('workoutId') workoutId: number) {
+    return null;
+  }
+
+  @MessagePattern(GENERATE_ALL_WORKOUTS_REPORT)
+  public async generateAllWorkoutsReport(@Payload('userId') userId: number) {
+    return null;
   }
 }

@@ -46,16 +46,14 @@ export class WorkoutsGatewayController {
     return null;
   }
 
-  // TODO: сделать генерацию отчета по тренировки по id
   @Post('generate-workout-report-by-id')
   public async generateWorkoutReport(workoutId: number) {
-    return null;
+    return this.workoutsService.generateWorkoutReport(workoutId);
   }
 
-  // TODO: сделать генерацию отчета\отчетов по всем тренировкам пользователя
   @Get('get-all-workouts-reports')
-  public async getAllUserWorkoutsReports(@GetCurrentUserId() userId: number) {
-    return null;
+  public async getAllUserWorkoutsReport(@GetCurrentUserId() userId: number) {
+    return this.workoutsService.generateAllWorkoutsReport(userId);
   }
 
   @Patch(':id')

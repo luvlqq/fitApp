@@ -42,4 +42,8 @@ export class WorkoutsRepository {
   public async deleteWorkout(id: number) {
     return this.prisma.workouts.delete({ where: { id } });
   }
+
+  public async getAllUserWorkouts(userId: number) {
+    return this.prisma.workouts.findMany({ where: { userId: userId } });
+  }
 }
