@@ -1,3 +1,4 @@
+import { AuditService } from '@app/common/audit/audit.service';
 import {
   CreateWorkoutsDto,
   UpdateWorkoutsDto,
@@ -14,6 +15,7 @@ export class WorkoutsMicroserviceService {
   constructor(
     private readonly repository: WorkoutsRepository,
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
+    private readonly audit: AuditService,
   ) {}
 
   public async getAllWorkouts(): Promise<Workouts[]> {
@@ -62,6 +64,11 @@ export class WorkoutsMicroserviceService {
       return await fn();
     } catch (e) {
       if (id !== undefined && dto !== undefined) {
+        await this.audit.createAuditLog(
+          WorkoutsMicroserviceService.name,
+          '',
+          e,
+        );
         this.logger.error(
           `Workout with id: ${id} and ${JSON.stringify(dto)} has an error`,
           {
@@ -69,10 +76,20 @@ export class WorkoutsMicroserviceService {
           },
         );
       } else if (id !== undefined) {
+        await this.audit.createAuditLog(
+          WorkoutsMicroserviceService.name,
+          '',
+          e,
+        );
         this.logger.error(`Workout with id: ${id} has an error`, {
           service: WorkoutsMicroserviceService.name,
         });
       } else {
+        await this.audit.createAuditLog(
+          WorkoutsMicroserviceService.name,
+          '',
+          e,
+        );
         this.logger.error(`Error ${e}`, {
           service: WorkoutsMicroserviceService.name,
         });

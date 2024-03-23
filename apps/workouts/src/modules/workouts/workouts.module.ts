@@ -1,3 +1,4 @@
+import { AuditService } from '@app/common/audit/audit.service';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
 import { PrismaModule } from '@app/db';
 import { Module } from '@nestjs/common';
@@ -14,6 +15,6 @@ import { WorkoutsRepository } from './workouts.repository';
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
   ],
   controllers: [WorkoutsController],
-  providers: [WorkoutsRepository, WorkoutsMicroserviceService],
+  providers: [WorkoutsRepository, WorkoutsMicroserviceService, AuditService],
 })
 export class WorkoutsModule {}
