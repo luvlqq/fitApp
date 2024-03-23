@@ -13,7 +13,6 @@ import {
 } from '@app/contracts/dto/workouts.dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { number } from 'joi';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable()

@@ -1,3 +1,4 @@
+import { AuditService } from '@app/common/audit/audit.service';
 import { Constants } from '@app/common/constants/constants';
 import { AuthDto } from '@app/contracts/dto/auth.dto';
 import {
@@ -20,12 +21,18 @@ export class AuthService {
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
     private readonly repository: AuthRepository,
     private readonly jwtTokenService: JwtTokensService,
+    private readonly audit: AuditService,
   ) {}
 
   public async register(dto: AuthDto) {
     const findUser = await this.repository.foundUser(dto);
 
     if (findUser) {
+      await this.audit.createAuditLog(
+        AuthService.name,
+        'User in register',
+        'User with this login is already exist',
+      );
       this.logger.error(`User with email: ${dto.email} is already exist!`, {
         service: AuthService.name,
       });
@@ -53,6 +60,11 @@ export class AuthService {
     const user = await this.repository.foundUser(dto);
 
     if (!user) {
+      await this.audit.createAuditLog(
+        AuthService.name,
+        'User Not Found',
+        'User are not exist!',
+      );
       this.logger.error(`User with email: ${dto.email} does not found!`, {
         service: AuthService.name,
       });

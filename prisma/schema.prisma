@@ -7,7 +7,7 @@ generator client {
 
 generator docs {
   provider = "node node_modules/prisma-docs-generator"
-  output = "../../docs"
+  output   = "./docs"
 }
 
 datasource db {
@@ -118,6 +118,14 @@ model Achievements {
   dateOfCollect DateTime @default(now())
   user          User?    @relation(fields: [userId], references: [id])
   userId        Int?
+}
+
+model Audit {
+  id        Int      @unique @default(autoincrement())
+  scope     String?
+  name      String?
+  text      String
+  createdAt DateTime @default(now())
 }
 
 enum groupOfMusculesENUM {

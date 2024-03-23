@@ -1,3 +1,4 @@
+import { AuditService } from '@app/common/audit/audit.service';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
 import { PrismaModule } from '@app/db';
 import { Module } from '@nestjs/common';
@@ -14,6 +15,6 @@ import { ExerciseMicroserviceService } from './exercise.service';
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
   ],
   controllers: [ExerciseMicroserviceController],
-  providers: [ExerciseMicroserviceService, ExerciseRepository],
+  providers: [ExerciseMicroserviceService, ExerciseRepository, AuditService],
 })
 export class ExerciseMicroserviceModule {}
