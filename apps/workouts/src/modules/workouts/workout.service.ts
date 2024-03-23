@@ -44,6 +44,10 @@ export class WorkoutsMicroserviceService {
     return this.errorWrapper(() => this.repository.deleteWorkout(id));
   }
 
+  public async getAllUserWorkouts(userId: number) {
+    return this.errorWrapper(() => this.repository.getAllUserWorkouts(userId));
+  }
+
   /**
    * Wrapped function for catch errors and log them
    * @param fn -> function
