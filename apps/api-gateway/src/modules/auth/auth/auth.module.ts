@@ -1,3 +1,4 @@
+import { AuditService } from '@app/common/audit/audit.service';
 import configuration from '@app/common/configuration/configuration';
 import { WinstonLoggerModule } from '@app/common/log/logger.module';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
@@ -35,6 +36,7 @@ import { AuthGatewayService } from './auth.service';
     AuthGatewayService,
     AuthRepository,
     JwtTokensService,
+    AuditService,
   ],
   exports: [RmqModule],
 })

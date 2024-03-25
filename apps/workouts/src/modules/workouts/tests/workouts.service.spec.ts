@@ -1,3 +1,4 @@
+import { AuditService } from '@app/common/audit/audit.service';
 import { WinstonLoggerModule } from '@app/common/log/logger.module';
 import { CreateWorkoutsDto } from '@app/contracts/dto/workouts.dto';
 import { PrismaModule } from '@app/db';
@@ -12,7 +13,11 @@ describe('Workouts service', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WorkoutsMicroserviceService, WorkoutsRepository],
+      providers: [
+        WorkoutsMicroserviceService,
+        WorkoutsRepository,
+        AuditService,
+      ],
       imports: [PrismaModule, WinstonLoggerModule],
     }).compile();
 
@@ -27,7 +32,7 @@ describe('Workouts service', () => {
   });
 
   describe('Create workout', () => {
-    it('craete a workout form repo', async () => {
+    it('create a workout form repo', async () => {
       const dto: CreateWorkoutsDto = {
         name: 'Test workout',
         description: 'test desc',
