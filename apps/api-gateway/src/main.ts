@@ -24,7 +24,7 @@ async function bootstrap() {
   app.enableCors({ origin: true, credentials: true });
   app.use(cookieParser());
   app.use(helmet());
-  app.use(csurf());
+  // app.use(csurf());
 
   sigInt(app);
   sigTerm(app);

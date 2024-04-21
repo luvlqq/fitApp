@@ -7,6 +7,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthModule } from './auth/auth.module';
 import { AuthRepository } from './auth/auth.repository';
 import { MailerMicroserviceModule } from './users/mailer/mailer.module';
+import { NotificationsModule } from './users/notifications/notifications.module';
 import { UsersMicroserviceModule } from './users/users/users.module';
 
 @Module({
@@ -14,6 +15,7 @@ import { UsersMicroserviceModule } from './users/users/users.module';
     AuthModule,
     MailerMicroserviceModule,
     UsersMicroserviceModule,
+    NotificationsModule,
     WinstonLoggerModule,
     JwtModule.register({}),
     RmqModule,
