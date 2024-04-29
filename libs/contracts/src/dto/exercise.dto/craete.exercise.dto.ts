@@ -19,10 +19,29 @@ export class CreateExerciseDto {
   @IsNumber()
   duration: number;
 
-  @ApiProperty({ description: 'Exercise difficulty level', nullable: false })
+  @ApiProperty({
+    description: 'Exercise difficulty level',
+    enum: ['Easy', 'Medium', 'Hard', 'Light_Weitgh_Baby'],
+    nullable: false,
+  })
   difficultyLevel: DifficultyLevels;
 
-  @ApiProperty({ description: 'Exercise group of muscle', nullable: false })
+  @ApiProperty({
+    description: 'Exercise group of muscle',
+    enum: [
+      'Chest',
+      'Back',
+      'Hips',
+      'Bicep',
+      'Triceps',
+      'Delta',
+      'Press',
+      'Caviar',
+      'Trapezium',
+      'Forearm',
+    ],
+    nullable: false,
+  })
   @IsString()
   groupOfMuscles: groupOfMusculesENUM;
 }

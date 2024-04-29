@@ -8,6 +8,7 @@ export class HealthDataDto {
     example: 'Male',
     required: true,
     nullable: false,
+    enum: Object.values(Gender),
   })
   @IsEnum(Gender)
   gender: Gender;
@@ -23,15 +24,25 @@ export class HealthDataDto {
   @ApiProperty({
     description: 'User date of birth in ISO date string format',
     nullable: false,
+    type: 'string',
+    format: 'date-time',
   })
   @IsString()
   dateOfBirth: string;
 
-  @ApiProperty({ description: 'User primary goal', nullable: false })
+  @ApiProperty({
+    description: 'User primary goal',
+    nullable: false,
+    enum: Object.values(MainUserGoal),
+  })
   @IsEnum(MainUserGoal)
   primaryGoal: MainUserGoal;
 
-  @ApiProperty({ description: 'User fitness activity level', nullable: false })
+  @ApiProperty({
+    description: 'User fitness activity level',
+    nullable: false,
+    enum: Object.values(FitnessLevel),
+  })
   @IsEnum(FitnessLevel)
   fitnessLevel: FitnessLevel;
 }

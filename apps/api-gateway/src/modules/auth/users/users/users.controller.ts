@@ -7,7 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { GetCurrentUserId } from '../../auth/decorators';
 import { UsersGatewayService } from './users.service';
@@ -17,11 +17,24 @@ import { UsersGatewayService } from './users.service';
 export class UsersGatewayController {
   constructor(private readonly usersService: UsersGatewayService) {}
 
+  @ApiResponse({
+    status: 200,
+    description: 'Returns the user information',
+  })
   @Get()
   public async getUserInfo(@GetCurrentUserId() userId: number) {
     return this.usersService.showUserInfo(userId);
   }
 
+  @ApiResponse({
+    status: 201,
+    description: 'Health data successfully added',
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Bad request',
+  })
+  @ApiBody({ type: HealthDataDto })
   @Post('health-data')
   public async addHealthData(
     @GetCurrentUserId() userId: number,
@@ -30,6 +43,15 @@ export class UsersGatewayController {
     return this.usersService.addHealthData(userId, dto);
   }
 
+  @ApiResponse({
+    status: 201,
+    description: 'Health data successfully updated',
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Bad request',
+  })
+  @ApiBody({ type: HealthDataDto })
   @Patch('update-data')
   public async updateHealthData(
     @GetCurrentUserId(ParseIntPipe) userId: number,
