@@ -1,9 +1,11 @@
+import { AuditService } from '@app/common/audit/audit.service';
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { CreateWorkoutsDto } from '@app/contracts/dto/workouts.dto';
+import { PrismaModule } from '@app/db';
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { WorkoutsMicroserviceService } from '../workout.service';
 import { WorkoutsRepository } from '../workouts.repository';
-import { PrismaModule } from '@app/db';
-import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
-import { WinstonLoggerModule } from '@app/common/log/logger.module';
 
 describe('Workouts service', () => {
   let service: WorkoutsMicroserviceService;
@@ -11,7 +13,11 @@ describe('Workouts service', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WorkoutsMicroserviceService, WorkoutsRepository],
+      providers: [
+        WorkoutsMicroserviceService,
+        WorkoutsRepository,
+        AuditService,
+      ],
       imports: [PrismaModule, WinstonLoggerModule],
     }).compile();
 
@@ -26,12 +32,11 @@ describe('Workouts service', () => {
   });
 
   describe('Create workout', () => {
-    it('craete a workout form repo', async () => {
+    it('create a workout form repo', async () => {
       const dto: CreateWorkoutsDto = {
         name: 'Test workout',
         description: 'test desc',
-        duration: new Date(),
-        timeOfExercise: new Date(),
+        duration: 12,
         exerciseId: [1],
       };
 
@@ -39,8 +44,7 @@ describe('Workouts service', () => {
         id: 1,
         name: 'Test workout',
         description: 'test desc',
-        duration: new Date(),
-        timeOfExercise: new Date(),
+        duration: 12,
         userId: 1,
       };
 

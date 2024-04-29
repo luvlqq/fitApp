@@ -1,3 +1,4 @@
+import { CreateMealDto, UpdateMealsDto } from '@app/contracts/dto/meals.dto';
 import {
   Body,
   Controller,
@@ -7,10 +8,9 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { CreateMealDto } from './dto/create.meals.dto';
-import { MealsGatewayService } from './meals.service';
-import { UpdateMealsDto } from './dto/update.meals.dto';
 import { ApiTags } from '@nestjs/swagger';
+
+import { MealsGatewayService } from './meals.service';
 
 @ApiTags('Meals')
 @Controller('meals')
@@ -23,7 +23,7 @@ export class MealsGatewayController {
   }
 
   @Post('create')
-  public async cteateMeal(@Body() dto: CreateMealDto) {
+  public async createMeal(@Body() dto: CreateMealDto) {
     return this.mealsService.createMeals(dto);
   }
 

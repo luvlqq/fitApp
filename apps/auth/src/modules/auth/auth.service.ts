@@ -1,3 +1,6 @@
+import { AuditService } from '@app/common/audit/audit.service';
+import { Constants } from '@app/common/constants/constants';
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import {
   BadRequestException,
   Inject,
@@ -5,32 +8,31 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { AuthRepository } from './auth.repository';
-import { PrismaService } from '@app/db';
-import { JwtService } from '@nestjs/jwt';
-import { JwtTokensService } from './jwt.tokens.service';
-import { AuthDto } from './dto/auth.dto';
 import * as bcrypt from 'bcrypt';
-import { Constants } from '@app/common/constants/constants';
-import { MailerMicroserviceService } from '../users/mailer/mailer.service';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
+
+import { AuthRepository } from './auth.repository';
+import { JwtTokensService } from './jwt.tokens.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
-    private readonly jwtService: JwtService,
     private readonly repository: AuthRepository,
     private readonly jwtTokenService: JwtTokensService,
-    private readonly prisma: PrismaService,
-    private readonly mailer: MailerMicroserviceService,
+    private readonly audit: AuditService,
   ) {}
 
   public async register(dto: AuthDto) {
     const findUser = await this.repository.foundUser(dto);
 
     if (findUser) {
+      await this.audit.createAuditLog(
+        AuthService.name,
+        'User in register',
+        'User with this login is already exist',
+      );
       this.logger.error(`User with email: ${dto.email} is already exist!`, {
         service: AuthService.name,
       });
@@ -58,6 +60,11 @@ export class AuthService {
     const user = await this.repository.foundUser(dto);
 
     if (!user) {
+      await this.audit.createAuditLog(
+        AuthService.name,
+        'User Not Found',
+        'User are not exist!',
+      );
       this.logger.error(`User with email: ${dto.email} does not found!`, {
         service: AuthService.name,
       });

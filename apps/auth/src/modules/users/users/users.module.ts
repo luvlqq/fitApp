@@ -1,12 +1,13 @@
-import { Module } from '@nestjs/common';
-import { UsersMicroserviceController } from './users.controller';
-import { UsersMicroserviceService } from './users.service';
-import { PrismaModule } from '@app/db';
-import { UsersMicroserviceRepository } from './users.repository';
-import { AtGuard } from 'apps/api-gateway/src/modules/auth/auth/guards';
-import { APP_GUARD } from '@nestjs/core';
-import { ConfigModule } from '@nestjs/config';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
+import { PrismaModule } from '@app/db';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { AtGuard } from 'apps/api-gateway/src/modules/auth/auth/guards';
+
+import { UsersMicroserviceController } from './users.controller';
+import { UsersMicroserviceRepository } from './users.repository';
+import { UsersMicroserviceService } from './users.service';
 
 @Module({
   imports: [

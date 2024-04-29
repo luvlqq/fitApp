@@ -1,32 +1,35 @@
-import { NestFactory } from '@nestjs/core';
-import { ApiGatewayModule } from './api-gateway.module';
-import { Logger, ValidationPipe } from '@nestjs/common';
-import * as cookieParser from 'cookie-parser';
+import { sigInt, sigTerm } from '@app/common/configuration';
 import { setupSwagger } from '@app/common/swagger/initialization/swagger.init';
+import { Logger, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
+import * as cookieParser from 'cookie-parser';
+import * as csurf from 'csurf';
+import helmet from 'helmet';
+
+import { ApiGatewayModule } from './api-gateway.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(ApiGatewayModule);
   const logger = new Logger();
+  const config = new ConfigService();
+  const PORT = config.get<number>('PORT');
 
   setupSwagger(app);
 
+  // TODO uncommit after deploy
+  // app.setGlobalPrefix('api');
   app.enableShutdownHooks();
   app.useGlobalPipes(new ValidationPipe());
+  app.enableCors({ origin: true, credentials: true });
   app.use(cookieParser());
+  app.use(helmet());
+  // app.use(csurf());
 
-  process.on('SIGINT', async () => {
-    Logger.log('Server close by user');
-    await app.close();
-    process.exit(0);
-  });
-
-  process.on('SIGTERM', async () => {
-    Logger.log('Server close by system');
-    await app.close();
-    process.exit(0);
-  });
+  sigInt(app);
+  sigTerm(app);
 
   logger.log('Gateway is started', 'Microservice Init');
-  await app.listen(3001);
+  await app.listen(PORT);
 }
 bootstrap();

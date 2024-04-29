@@ -1,9 +1,9 @@
+import { HealthDataDto, UpdateHealthData } from '@app/contracts/dto/users.dto';
 import { Body, Controller, Get, ParseIntPipe, Post } from '@nestjs/common';
-import { UsersGatewayService } from './users.service';
-import { GetCurrentUserId } from '../../auth/decorators';
 import { ApiTags } from '@nestjs/swagger';
-import { HealthDataDto } from './dto/healthdata.dto';
-import { UpdateHealthData } from './dto/update.healthData.dto';
+
+import { GetCurrentUserId } from '../../auth/decorators';
+import { UsersGatewayService } from './users.service';
 
 @ApiTags('Users')
 @Controller('users')

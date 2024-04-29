@@ -1,10 +1,12 @@
+import { AuditService } from '@app/common/audit/audit.service';
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { CreateExerciseDto } from '@app/contracts/dto/exercise.dto';
+import { PrismaModule } from '@app/db';
 import { Test, TestingModule } from '@nestjs/testing';
+import { DifficultyLevels, groupOfMusculesENUM } from '@prisma/client';
+
 import { ExerciseRepository } from '../exercise.repository';
 import { ExerciseMicroserviceService } from '../exercise.service';
-import { PrismaModule } from '@app/db';
-import { CreateExerciseDto } from '../dto/craete.exercise.dto';
-import { groupOfMusculesENUM } from '@prisma/client';
-import { WinstonLoggerModule } from '@app/common/log/logger.module';
 
 describe('ExerciseService', () => {
   let service: ExerciseMicroserviceService;
@@ -12,7 +14,11 @@ describe('ExerciseService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ExerciseMicroserviceService, ExerciseRepository],
+      providers: [
+        ExerciseMicroserviceService,
+        ExerciseRepository,
+        AuditService,
+      ],
       imports: [PrismaModule, WinstonLoggerModule],
     }).compile();
 
@@ -32,7 +38,9 @@ describe('ExerciseService', () => {
         name: 'Test Exercise',
         description: 'Test Description',
         video: 'Test Video',
-        gropuOfMuscules: groupOfMusculesENUM.Back,
+        duration: 123,
+        difficultyLevel: DifficultyLevels.Medium,
+        groupOfMuscles: groupOfMusculesENUM.Back,
       };
 
       const expectedExercise = {
@@ -40,8 +48,10 @@ describe('ExerciseService', () => {
         name: 'Test Exercise',
         description: 'Test Description',
         video: 'Test Video',
+        duration: 123,
         workoutId: 1,
-        gropuOfMuscules: groupOfMusculesENUM.Back,
+        difficultyLevel: DifficultyLevels.Medium,
+        groupOfMuscles: groupOfMusculesENUM.Back,
       };
 
       jest

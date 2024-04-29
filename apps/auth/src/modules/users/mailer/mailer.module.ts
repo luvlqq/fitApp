@@ -1,6 +1,7 @@
 import { Global, Module } from '@nestjs/common';
-import { MailerMicroserviceService } from './mailer.service';
 import { ScheduleModule } from '@nestjs/schedule';
+
+import { MailerMicroserviceService } from './mailer.service';
 
 @Global()
 @Module({

@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
-import { PrismaModule } from '@app/db';
-import { WorkoutsModule } from './workouts/workouts.module';
-import { ExerciseMicroserviceModule } from './exercises/exercise.module';
 import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { PrismaModule } from '@app/db';
+import { Module } from '@nestjs/common';
+
+import { ExerciseMicroserviceModule } from './exercises/exercise.module';
+import { WorkoutsModule } from './workouts/workouts.module';
 
 @Module({
   imports: [

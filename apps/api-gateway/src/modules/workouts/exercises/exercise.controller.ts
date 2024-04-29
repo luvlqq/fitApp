@@ -1,4 +1,8 @@
 import {
+  CreateExerciseDto,
+  UpdateExerciseDto,
+} from '@app/contracts/dto/exercise.dto';
+import {
   Body,
   Controller,
   Delete,
@@ -8,10 +12,9 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ExerciseGatewayService } from './exercise.service';
-import { CreateExerciseDto } from './dto/craete.exercise.dto';
-import { UpdateExerciseDto } from './dto/update.exercise.dto';
 import { ApiTags } from '@nestjs/swagger';
+
+import { ExerciseGatewayService } from './exercise.service';
 
 @ApiTags('Exercise')
 @Controller('exercise')

@@ -1,7 +1,7 @@
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import { PrismaService } from '@app/db';
 import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { AuthDto } from 'apps/api-gateway/src/modules/auth/auth/dto/auth.dto';
 
 @Injectable()
 export class AuthRepository {
@@ -13,7 +13,10 @@ export class AuthRepository {
     });
   }
 
-  public async createNewUser(dto: AuthDto, hashedPassword): Promise<User> {
+  public async createNewUser(
+    dto: AuthDto,
+    hashedPassword: string,
+  ): Promise<User> {
     return this.prisma.user.create({
       data: { email: dto.email, password: hashedPassword },
     });

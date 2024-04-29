@@ -1,3 +1,5 @@
+import { DtoBadRequest, DtoUnauthorized } from '@app/common/swagger/responses';
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import {
   Body,
   Controller,
@@ -8,22 +10,19 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGatewayService } from './auth.service';
-import { AuthDto } from './dto/auth.dto';
-import { Response } from 'express';
-import { Public } from './decorators/public.decorator';
-import { GetCurrentUserId } from './decorators/get.current.userId.decorator';
-import { RtGuard } from './guards';
-import { GetCurrentUser } from './decorators/get.current.user.decorator';
-import { JwtTokensService } from 'apps/auth/src/modules/auth/jwt.tokens.service';
 import {
   ApiOperation,
   ApiResponse,
   ApiTags,
   getSchemaPath,
 } from '@nestjs/swagger';
-import { DtoBadRequest, DtoUnauthorized } from '@app/common/swagger/responses';
 import { Throttle } from '@nestjs/throttler';
+import { JwtTokensService } from 'apps/auth/src/modules/auth/jwt.tokens.service';
+import { Response } from 'express';
+
+import { AuthGatewayService } from './auth.service';
+import { GetCurrentUser, GetCurrentUserId, Public } from './decorators';
+import { RtGuard } from './guards';
 
 @ApiTags('Auth')
 @Controller('auth')

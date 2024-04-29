@@ -1,7 +1,9 @@
+import {
+  CreateWorkoutsDto,
+  UpdateWorkoutsDto,
+} from '@app/contracts/dto/workouts.dto';
 import { PrismaService } from '@app/db';
 import { Injectable } from '@nestjs/common';
-import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
-import { UpdateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/update.workouts.dto';
 
 @Injectable()
 export class WorkoutsRepository {
@@ -9,7 +11,7 @@ export class WorkoutsRepository {
 
   public async getAllWorkouts() {
     return this.prisma.workouts.findMany({
-      include: { Exercise: true, user: true },
+      include: { Exercises: true, user: true },
     });
   }
 
@@ -26,8 +28,7 @@ export class WorkoutsRepository {
         name: dto.name,
         description: dto.description,
         duration: dto.duration,
-        timeOfExercise: dto.timeOfExercise,
-        Exercise: {
+        Exercises: {
           connect: exerciseId.map((id) => ({ id })),
         },
       },
@@ -40,5 +41,9 @@ export class WorkoutsRepository {
 
   public async deleteWorkout(id: number) {
     return this.prisma.workouts.delete({ where: { id } });
+  }
+
+  public async getAllUserWorkouts(userId: number) {
+    return this.prisma.workouts.findMany({ where: { userId: userId } });
   }
 }

@@ -1,4 +1,8 @@
 import {
+  CreateWorkoutsDto,
+  UpdateWorkoutsDto,
+} from '@app/contracts/dto/workouts.dto';
+import {
   Body,
   Controller,
   Delete,
@@ -8,11 +12,10 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { WorkoutsGatewayService } from './workouts.service';
-import { CreateWorkoutsDto } from './dto/create.workouts.dto';
-import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
 import { ApiTags } from '@nestjs/swagger';
+
 import { GetCurrentUserId } from '../../auth/auth/decorators';
+import { WorkoutsGatewayService } from './workouts.service';
 
 @ApiTags('Workouts')
 @Controller('workouts')
@@ -41,6 +44,16 @@ export class WorkoutsGatewayController {
     workoutId: number,
   ) {
     return null;
+  }
+
+  @Post('generate-workout-report-by-id')
+  public async generateWorkoutReport(workoutId: number) {
+    return this.workoutsService.generateWorkoutReport(workoutId);
+  }
+
+  @Get('get-all-workouts-reports')
+  public async getAllUserWorkoutsReport(@GetCurrentUserId() userId: number) {
+    return this.workoutsService.generateAllWorkoutsReport(userId);
   }
 
   @Patch(':id')

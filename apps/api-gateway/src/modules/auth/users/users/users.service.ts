@@ -1,15 +1,14 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { lastValueFrom } from 'rxjs';
-import { HealthDataDto } from './dto/healthdata.dto';
-import { UpdateHealthData } from './dto/update.healthData.dto';
 import {
   ADD_WORKOUT_TO_FAVORITE,
   HEALTH_DATA,
   SHOW_USER_INFO,
   SUBSCRIBE_TO_WORKOUT,
   UPDATE_HEALTH_DATA,
-} from '@app/common/messages/auth/users/users';
+} from '@app/common/messages';
+import { HealthDataDto, UpdateHealthData } from '@app/contracts/dto/users.dto';
+import { Inject, Injectable } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class UsersGatewayService {

@@ -1,14 +1,16 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { lastValueFrom } from 'rxjs';
-import { CreateExerciseDto } from './dto/craete.exercise.dto';
-import { UpdateExerciseDto } from './dto/update.exercise.dto';
 import {
   CREATE_EXERCISE,
   DELETE_EXERCISE,
   GET_ALL_EXERCISES,
   UPDATE_EXERCISE,
-} from '@app/common/messages/workouts/exercises';
+} from '@app/common/messages';
+import {
+  CreateExerciseDto,
+  UpdateExerciseDto,
+} from '@app/contracts/dto/exercise.dto';
+import { Inject, Injectable } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class ExerciseGatewayService {

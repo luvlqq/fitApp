@@ -1,15 +1,19 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { lastValueFrom } from 'rxjs';
-import { CreateWorkoutsDto } from './dto/create.workouts.dto';
-import { UpdateWorkoutsDto } from './dto/update.workouts.dto';
 import {
   CREATE_WORKOUT,
   CREATE_WORKOUT_BY_EXERCISES,
   DELETE_WORKOUT,
+  GENERATE_ALL_WORKOUTS_REPORT,
+  GENERATE_WORKOUT_REPORT,
   SHOW_ALL_WORKOUTS,
   UPDATE_WORKOUT,
-} from '@app/common/messages/workouts/workouts';
+} from '@app/common/messages';
+import {
+  CreateWorkoutsDto,
+  UpdateWorkoutsDto,
+} from '@app/contracts/dto/workouts.dto';
+import { Inject, Injectable } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class WorkoutsGatewayService {
@@ -46,6 +50,22 @@ export class WorkoutsGatewayService {
   public async deleteWorkout(id: number) {
     return await lastValueFrom(
       this.workoutsClient.send(DELETE_WORKOUT, { id: id }),
+    );
+  }
+
+  public async generateWorkoutReport(workoutId: number) {
+    return await lastValueFrom(
+      this.workoutsClient.send(GENERATE_WORKOUT_REPORT, {
+        workoutId: workoutId,
+      }),
+    );
+  }
+
+  public async generateAllWorkoutsReport(userId: number) {
+    return await lastValueFrom(
+      this.workoutsClient.send(GENERATE_ALL_WORKOUTS_REPORT, {
+        userId: userId,
+      }),
     );
   }
 }

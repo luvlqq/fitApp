@@ -1,6 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
+
 import { WorkoutsModule } from '../src/modules/workouts.module';
 
 describe('WorkoutsController (e2e)', () => {

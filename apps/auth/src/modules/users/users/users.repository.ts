@@ -1,8 +1,6 @@
+import { HealthDataDto, UpdateHealthData } from '@app/contracts/dto/users.dto';
 import { PrismaService } from '@app/db';
 import { Injectable } from '@nestjs/common';
-import { HealthDataDto } from 'apps/api-gateway/src/modules/auth/users/users/dto/healthdata.dto';
-import { UpdateHealthData } from './dto/update.healthData.dto';
-
 @Injectable()
 export class UsersMicroserviceRepository {
   constructor(private readonly prisma: PrismaService) {}
@@ -14,7 +12,7 @@ export class UsersMicroserviceRepository {
         Workouts: true,
         HealthData: true,
         FavouriteWorkouts: true,
-        Achivments: true,
+        Achievements: true,
         Goals: true,
         NutrionPlans: true,
       },
@@ -26,13 +24,13 @@ export class UsersMicroserviceRepository {
   }
 
   public async findUserHealthData(userId: number) {
-    return await this.prisma.healthData.findUnique({
+    return this.prisma.healthData.findUnique({
       where: { userId: userId },
     });
   }
 
   public async updateHealthData(userId: number, dto: UpdateHealthData) {
-    return await this.prisma.healthData.update({
+    return this.prisma.healthData.update({
       where: { userId: userId },
       data: { ...dto },
     });

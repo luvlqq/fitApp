@@ -1,7 +1,7 @@
+import { CreateMealDto, UpdateMealsDto } from '@app/contracts/dto/meals.dto';
 import { Injectable } from '@nestjs/common';
+
 import { MealsMicroserviceRepository } from './meals.repository';
-import { CreateMealDto } from './dto/create.meals.dto';
-import { UpdateMealsDto } from './dto/update.meals.dto';
 
 @Injectable()
 export class MealsMicroserviceService {

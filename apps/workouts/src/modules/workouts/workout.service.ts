@@ -1,16 +1,21 @@
+import { AuditService } from '@app/common/audit/audit.service';
+import {
+  CreateWorkoutsDto,
+  UpdateWorkoutsDto,
+} from '@app/contracts/dto/workouts.dto';
 import { Inject, Injectable } from '@nestjs/common';
-import { WorkoutsRepository } from './workouts.repository';
-import { CreateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/create.workouts.dto';
-import { UpdateWorkoutsDto } from 'apps/api-gateway/src/modules/workouts/workouts/dto/update.workouts.dto';
+import { Workouts } from '@prisma/client';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
-import { Workouts } from '@prisma/client';
+
+import { WorkoutsRepository } from './workouts.repository';
 
 @Injectable()
 export class WorkoutsMicroserviceService {
   constructor(
     private readonly repository: WorkoutsRepository,
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
+    private readonly audit: AuditService,
   ) {}
 
   public async getAllWorkouts(): Promise<Workouts[]> {
@@ -41,6 +46,10 @@ export class WorkoutsMicroserviceService {
     return this.errorWrapper(() => this.repository.deleteWorkout(id));
   }
 
+  public async getAllUserWorkouts(userId: number) {
+    return this.errorWrapper(() => this.repository.getAllUserWorkouts(userId));
+  }
+
   /**
    * Wrapped function for catch errors and log them
    * @param fn -> function
@@ -55,6 +64,11 @@ export class WorkoutsMicroserviceService {
       return await fn();
     } catch (e) {
       if (id !== undefined && dto !== undefined) {
+        await this.audit.createAuditLog(
+          WorkoutsMicroserviceService.name,
+          '',
+          e,
+        );
         this.logger.error(
           `Workout with id: ${id} and ${JSON.stringify(dto)} has an error`,
           {
@@ -62,10 +76,20 @@ export class WorkoutsMicroserviceService {
           },
         );
       } else if (id !== undefined) {
+        await this.audit.createAuditLog(
+          WorkoutsMicroserviceService.name,
+          '',
+          e,
+        );
         this.logger.error(`Workout with id: ${id} has an error`, {
           service: WorkoutsMicroserviceService.name,
         });
       } else {
+        await this.audit.createAuditLog(
+          WorkoutsMicroserviceService.name,
+          '',
+          e,
+        );
         this.logger.error(`Error ${e}`, {
           service: WorkoutsMicroserviceService.name,
         });

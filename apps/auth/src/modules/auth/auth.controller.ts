@@ -1,14 +1,10 @@
+import { LOGIN, REFRESH, REGISTER, SIGNOUT } from '@app/common/messages';
+import { AuthDto } from '@app/contracts/dto/auth.dto';
 import { Controller } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
+
 import { AuthService } from './auth.service';
 import { JwtTokensService } from './jwt.tokens.service';
-import { MessagePattern, Payload } from '@nestjs/microservices';
-import { AuthDto } from './dto/auth.dto';
-import {
-  LOGIN,
-  REFRESH,
-  REGISTER,
-  SIGNOUT,
-} from '@app/common/messages/auth/auth/constants';
 
 @Controller('auth')
 export class AuthController {

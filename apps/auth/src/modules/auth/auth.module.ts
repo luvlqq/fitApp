@@ -1,17 +1,19 @@
-import { Logger, Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { AuthController } from './auth.controller';
-import { AuthRepository } from './auth.repository';
-import { JwtModule } from '@nestjs/jwt';
+import { AuditService } from '@app/common/audit/audit.service';
+import configuration from '@app/common/configuration/configuration';
+import { WinstonLoggerModule } from '@app/common/log/logger.module';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
 import { PrismaModule } from '@app/db';
+import { Logger, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { JwtTokensService } from './jwt.tokens.service';
-import configuration from '@app/common/configuration/configuration';
-import { UsersMicroserviceModule } from '../users/users/users.module';
+import { JwtModule } from '@nestjs/jwt';
+
 import { MailerMicroserviceModule } from '../users/mailer/mailer.module';
 import { MailerMicroserviceService } from '../users/mailer/mailer.service';
-import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { UsersMicroserviceModule } from '../users/users/users.module';
+import { AuthController } from './auth.controller';
+import { AuthRepository } from './auth.repository';
+import { AuthService } from './auth.service';
+import { JwtTokensService } from './jwt.tokens.service';
 
 @Module({
   imports: [
@@ -36,6 +38,7 @@ import { WinstonLoggerModule } from '@app/common/log/logger.module';
     // RtStrategy,
     // AtStrategy,
     Logger,
+    AuditService,
   ],
   exports: [AuthRepository, JwtTokensService],
 })
