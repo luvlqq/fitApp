@@ -32,7 +32,7 @@ export class UsersGatewayService {
     );
   }
 
-  public async addWorkoutsToFavourite(userId: number, workoutId: number) {
+  public async addWorkoutsToFavorite(userId: number, workoutId: number) {
     return await lastValueFrom(
       this.authClient.send(ADD_WORKOUT_TO_FAVORITE, {
         userId: userId,

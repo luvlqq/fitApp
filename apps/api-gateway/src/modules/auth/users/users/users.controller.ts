@@ -1,5 +1,12 @@
 import { HealthDataDto, UpdateHealthData } from '@app/contracts/dto/users.dto';
-import { Body, Controller, Get, ParseIntPipe, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  ParseIntPipe,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import { GetCurrentUserId } from '../../auth/decorators';
@@ -23,7 +30,7 @@ export class UsersGatewayController {
     return this.usersService.addHealthData(userId, dto);
   }
 
-  @Post('update-data')
+  @Patch('update-data')
   public async updateHealthData(
     @GetCurrentUserId(ParseIntPipe) userId: number,
     @Body() dto: UpdateHealthData,
@@ -36,7 +43,7 @@ export class UsersGatewayController {
     @GetCurrentUserId(ParseIntPipe) userId: number,
     @Body() workoutId: number,
   ) {
-    return this.usersService.addWorkoutsToFavourite(userId, workoutId);
+    return this.usersService.addWorkoutsToFavorite(userId, workoutId);
   }
 
   @Post('subscribe-to-workout')

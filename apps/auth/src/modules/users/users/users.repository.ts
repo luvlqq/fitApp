@@ -20,7 +20,9 @@ export class UsersMicroserviceRepository {
   }
 
   public async createHealthData(userId: number, dto: HealthDataDto) {
-    return this.prisma.healthData.create({ data: { userId: userId, ...dto } });
+    return this.prisma.healthData.create({
+      data: { user: { connect: { id: userId } }, ...dto },
+    });
   }
 
   public async findUserHealthData(userId: number) {

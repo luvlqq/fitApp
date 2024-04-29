@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { FitnessLevel, Gender, MainUserGoal } from '@prisma/client';
-import { IsEnum, IsNumber } from 'class-validator';
+import { IsEnum, IsNumber, IsString } from 'class-validator';
 
 export class HealthDataDto {
   @ApiProperty({
@@ -20,9 +20,12 @@ export class HealthDataDto {
   @IsNumber()
   height: number;
 
-  @ApiProperty({ description: 'User age', nullable: false })
-  @IsNumber()
-  dateOfBirth: Date;
+  @ApiProperty({
+    description: 'User date of birth in ISO date string format',
+    nullable: false,
+  })
+  @IsString()
+  dateOfBirth: string;
 
   @ApiProperty({ description: 'User primary goal', nullable: false })
   @IsEnum(MainUserGoal)

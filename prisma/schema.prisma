@@ -64,10 +64,11 @@ model FavouriteWorkouts {
 
 model HealthData {
   id           Int          @unique @default(autoincrement())
+  age          Int
   gender       Gender
   weight       Float
   height       Float
-  dateOfBirth  DateTime
+  dateOfBirth  String
   primaryGoal  MainUserGoal
   fitnessLevel FitnessLevel
   user         User         @relation(fields: [userId], references: [id])

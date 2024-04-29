@@ -7,7 +7,6 @@ export class CreateWorkoutsDto {
   @IsNotEmpty()
   name: string;
 
-
   @ApiProperty({ description: 'Workout description', nullable: false })
   @IsString()
   @IsNotEmpty()

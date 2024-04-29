@@ -29,8 +29,8 @@ export class UsersMicroserviceService {
 
   public async updateHealthData(userId: number, dto: UpdateHealthData) {
     const checkHealthStatus = await this.repository.findUserHealthData(userId);
-    if (checkHealthStatus) {
-      this.logger.error(`User ${userId} dont have health data`, {
+    if (!checkHealthStatus) {
+      this.logger.error(`User ${userId} don't have health data`, {
         service: UsersMicroserviceService.name,
       });
       throw new BadRequestException('User dont have health data');
