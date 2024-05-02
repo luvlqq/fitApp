@@ -1,3 +1,4 @@
+import { calculateUserAge } from '@app/common/utils/utils';
 import { HealthDataDto, UpdateHealthData } from '@app/contracts/dto/users.dto';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
@@ -24,7 +25,10 @@ export class UsersMicroserviceService {
       });
       throw new BadRequestException('User are have health data');
     }
-    return this.repository.createHealthData(userId, dto);
+
+    const userAge = calculateUserAge(dto.dateOfBirth);
+
+    return this.repository.createHealthData(userId, dto, userAge);
   }
 
   public async updateHealthData(userId: number, dto: UpdateHealthData) {
