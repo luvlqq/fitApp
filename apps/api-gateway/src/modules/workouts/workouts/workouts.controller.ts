@@ -2,17 +2,20 @@ import {
   CreateWorkoutsDto,
   UpdateWorkoutsDto,
 } from '@app/contracts/dto/workouts.dto';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import {
   Body,
   Controller,
   Delete,
   Get,
+  Inject,
   Param,
   ParseIntPipe,
   Patch,
   Post,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { Cache } from 'cache-manager';
 
 import { GetCurrentUserId } from '../../auth/auth/decorators';
 import { WorkoutsGatewayService } from './workouts.service';
@@ -20,11 +23,22 @@ import { WorkoutsGatewayService } from './workouts.service';
 @ApiTags('Workouts')
 @Controller('workouts')
 export class WorkoutsGatewayController {
-  constructor(private readonly workoutsService: WorkoutsGatewayService) {}
+  constructor(
+    private readonly workoutsService: WorkoutsGatewayService,
+    @Inject(CACHE_MANAGER) private cacheService: Cache,
+  ) {}
 
   @Get()
   public async getAllWorkouts() {
-    return this.workoutsService.findALlWorkouts();
+    const cachedData = await this.cacheService.get('allWorkouts');
+
+    if (cachedData) {
+      return cachedData;
+    }
+
+    const workouts = await this.workoutsService.findAllWorkouts();
+    await this.cacheService.set('allWorkouts', workouts);
+    return workouts;
   }
 
   @Post()
