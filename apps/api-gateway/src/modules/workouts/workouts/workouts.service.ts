@@ -19,7 +19,7 @@ import { lastValueFrom } from 'rxjs';
 export class WorkoutsGatewayService {
   constructor(@Inject('WORKOUTS') private workoutsClient: ClientProxy) {}
 
-  public async findALlWorkouts() {
+  public async findAllWorkouts() {
     return await lastValueFrom(this.workoutsClient.send(SHOW_ALL_WORKOUTS, {}));
   }
 
