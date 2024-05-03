@@ -1,5 +1,12 @@
-import { LOGIN, REFRESH, REGISTER, SIGNOUT } from '@app/common/messages';
-import { AuthDto } from '@app/contracts/dto/auth.dto';
+import {
+  LOGIN,
+  REFRESH,
+  REGISTER,
+  RESET_PASSWORD,
+  SEND_RESET_CODE,
+  SIGNOUT,
+} from '@app/common/messages';
+import { AuthDto, ResetPasswordDto } from '@app/contracts/dto/auth.dto';
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
@@ -24,5 +31,15 @@ export class AuthGatewayService {
     return await lastValueFrom(
       this.authClient.send(REFRESH, { userId, refreshToken }),
     );
+  }
+
+  public async sendResetCode(email: string) {
+    return await lastValueFrom(
+      this.authClient.send(SEND_RESET_CODE, { email }),
+    );
+  }
+
+  public async resetPassword(dto: ResetPasswordDto) {
+    return await lastValueFrom(this.authClient.send(RESET_PASSWORD, { dto }));
   }
 }

@@ -5,11 +5,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator docs {
-  provider = "node node_modules/prisma-docs-generator"
-  output   = "./docs"
-}
-
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
@@ -23,6 +18,7 @@ model User {
   hashRt            String?
   role              Role                @default(User)
   createdAt         DateTime            @default(now())
+  resetCode         String?
   Workouts          Workouts[]
   HealthData        HealthData?
   FavouriteWorkouts FavouriteWorkouts[]

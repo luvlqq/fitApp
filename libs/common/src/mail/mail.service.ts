@@ -4,6 +4,7 @@ import { render } from '@react-email/render';
 import { createTransport } from 'nodemailer';
 import * as Mail from 'nodemailer/lib/mailer';
 
+import ResetPassword from './templates/ResetPasswordMail';
 import WelcomeEmail from './templates/WelcomeMail';
 
 @Injectable()
@@ -39,6 +40,14 @@ export class MailService {
       email: email,
       subject: `Welcome, ${email} !`,
       template: WelcomeEmail(),
+    });
+  }
+
+  public async resetPassword(email: string, code: string) {
+    await this.sendMail({
+      email: email,
+      subject: `Reset password`,
+      template: ResetPassword(code),
     });
   }
 }
