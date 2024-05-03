@@ -102,9 +102,7 @@ export class AuthService {
     return await bcrypt.hash(data, saltOrRounds);
   }
 
-  public async sendResetCode({ email }) {
-    console.log('em', email);
-
+  public async sendResetCode(email: string) {
     const user = await this.repository.foundUserByEmail(email);
 
     if (!user) {
@@ -139,10 +137,12 @@ export class AuthService {
 
     await this.repository.updateUserField(dto.email, 'resetCode', null);
 
-    return await this.repository.updateUserField(
+    await this.repository.updateUserField(
       dto.email,
       'password',
       newHashPassword,
     );
+
+    return { success: true };
   }
 }
