@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { render } from '@react-email/render';
 import { createTransport } from 'nodemailer';
 import * as Mail from 'nodemailer/lib/mailer';
+
+import WelcomeEmail from './templates/WelcomeMail';
 
 @Injectable()
 export class MailService {
@@ -17,7 +20,25 @@ export class MailService {
     });
   }
 
-  sendMail(options: Mail.Options) {
-    return this.nodemailerTransport.sendMail(options);
+  private generateEmail = (template) => {
+    return render(template);
+  };
+
+  public async sendMail({ email, subject, template }) {
+    const html = this.generateEmail(template);
+
+    await this.nodemailerTransport.sendMail({
+      to: email,
+      subject,
+      html,
+    });
+  }
+
+  public async sendWelcomeMessage(email: string) {
+    await this.sendMail({
+      email: email,
+      subject: `Welcome, ${email} !`,
+      template: WelcomeEmail(),
+    });
   }
 }

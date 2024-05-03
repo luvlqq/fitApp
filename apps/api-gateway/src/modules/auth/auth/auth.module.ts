@@ -1,6 +1,7 @@
 import { AuditService } from '@app/common/audit/audit.service';
 import configuration from '@app/common/configuration/configuration';
 import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { MailModule } from '@app/common/mail';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
 import { PrismaModule } from '@app/db';
 import { Module } from '@nestjs/common';
@@ -25,6 +26,7 @@ import { AuthGatewayService } from './auth.service';
     PrismaModule,
     AuthMicroserviceModule,
     WinstonLoggerModule,
+    MailModule,
     JwtModule.register({}),
   ],
   controllers: [AuthGatewayController],

@@ -1,5 +1,6 @@
 import { AuditService } from '@app/common/audit/audit.service';
 import { Constants } from '@app/common/constants/constants';
+import { MailService } from '@app/common/mail';
 import { AuthDto } from '@app/contracts/dto/auth.dto';
 import {
   BadRequestException,
@@ -22,6 +23,7 @@ export class AuthService {
     private readonly repository: AuthRepository,
     private readonly jwtTokenService: JwtTokensService,
     private readonly audit: AuditService,
+    private readonly mailService: MailService,
   ) {}
 
   public async register(dto: AuthDto) {
@@ -53,6 +55,8 @@ export class AuthService {
       `User with email: ${dto.email} has been register and logIn`,
       { service: AuthService.name },
     );
+    await this.mailService.sendWelcomeMessage(dto.email);
+
     return tokens;
   }
 
