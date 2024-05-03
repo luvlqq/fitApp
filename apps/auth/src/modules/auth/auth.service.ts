@@ -1,6 +1,7 @@
 import { AuditService } from '@app/common/audit/audit.service';
 import { Constants } from '@app/common/constants/constants';
-import { AuthDto } from '@app/contracts/dto/auth.dto';
+import { MailService } from '@app/common/mail';
+import { AuthDto, ResetPasswordDto } from '@app/contracts/dto/auth.dto';
 import {
   BadRequestException,
   Inject,
@@ -8,6 +9,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
+import { RpcException } from '@nestjs/microservices';
 import * as bcrypt from 'bcrypt';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
@@ -22,6 +24,7 @@ export class AuthService {
     private readonly repository: AuthRepository,
     private readonly jwtTokenService: JwtTokensService,
     private readonly audit: AuditService,
+    private readonly mailService: MailService,
   ) {}
 
   public async register(dto: AuthDto) {
@@ -53,6 +56,8 @@ export class AuthService {
       `User with email: ${dto.email} has been register and logIn`,
       { service: AuthService.name },
     );
+    await this.mailService.sendWelcomeMessage(dto.email);
+
     return tokens;
   }
 
@@ -95,5 +100,49 @@ export class AuthService {
   public async hashData(data: string): Promise<string> {
     const saltOrRounds = Constants.roundOfSalt;
     return await bcrypt.hash(data, saltOrRounds);
+  }
+
+  public async sendResetCode({ email }) {
+    console.log('em', email);
+
+    const user = await this.repository.foundUserByEmail(email);
+
+    if (!user) {
+      throw new RpcException(
+        new NotFoundException('User with this email not found'),
+      );
+    }
+
+    const resetCode = ('' + Math.random()).substring(2, 8);
+
+    await this.repository.putResetTokenToUser(email, resetCode);
+
+    await this.mailService.resetPassword(email, resetCode);
+  }
+
+  public async resetPassword(dto: ResetPasswordDto) {
+    const user = await this.repository.foundUserByEmail(dto.email);
+
+    if (!user) {
+      throw new RpcException(
+        new NotFoundException('User with this email not found'),
+      );
+    }
+
+    const comparedCodes = await this.repository.compareResetCode(dto.email);
+
+    if (comparedCodes.resetCode !== dto.code) {
+      throw new RpcException(new BadRequestException('Codes not match'));
+    }
+
+    const newHashPassword = await this.hashData(dto.password);
+
+    await this.repository.updateUserField(dto.email, 'resetCode', null);
+
+    return await this.repository.updateUserField(
+      dto.email,
+      'password',
+      newHashPassword,
+    );
   }
 }

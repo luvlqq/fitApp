@@ -13,6 +13,35 @@ export class AuthRepository {
     });
   }
 
+  public async foundUserByEmail(email: string) {
+    return this.prisma.user.findUnique({ where: { email: email } });
+  }
+
+  public async putResetTokenToUser(email: string, code: string) {
+    return this.prisma.user.update({
+      where: { email: email },
+      data: { resetCode: code },
+    });
+  }
+
+  public async updateUserField<T extends keyof User>(
+    email: string,
+    field: T,
+    value: User[T],
+  ) {
+    return this.prisma.user.update({
+      where: { email: email },
+      data: { [field]: value },
+    });
+  }
+
+  public async compareResetCode(email: string) {
+    return this.prisma.user.findUnique({
+      where: { email: email },
+      select: { resetCode: true },
+    });
+  }
+
   public async createNewUser(
     dto: AuthDto,
     hashedPassword: string,

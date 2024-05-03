@@ -1,6 +1,7 @@
 import { AuditService } from '@app/common/audit/audit.service';
 import configuration from '@app/common/configuration/configuration';
 import { WinstonLoggerModule } from '@app/common/log/logger.module';
+import { MailModule } from '@app/common/mail';
 import { RmqModule } from '@app/common/rabbit/rabbit.module';
 import { PrismaModule } from '@app/db';
 import { Logger, Module } from '@nestjs/common';
@@ -23,6 +24,7 @@ import { JwtTokensService } from './jwt.tokens.service';
     UsersMicroserviceModule,
     MailerMicroserviceModule,
     WinstonLoggerModule,
+    MailModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
       load: [configuration],
@@ -35,8 +37,6 @@ import { JwtTokensService } from './jwt.tokens.service';
     AuthRepository,
     JwtTokensService,
     MailerMicroserviceService,
-    // RtStrategy,
-    // AtStrategy,
     Logger,
     AuditService,
   ],

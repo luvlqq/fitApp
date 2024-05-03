@@ -1,5 +1,12 @@
-import { LOGIN, REFRESH, REGISTER, SIGNOUT } from '@app/common/messages';
-import { AuthDto } from '@app/contracts/dto/auth.dto';
+import {
+  LOGIN,
+  REFRESH,
+  REGISTER,
+  RESET_PASSWORD,
+  SEND_RESET_CODE,
+  SIGNOUT,
+} from '@app/common/messages';
+import { AuthDto, ResetPasswordDto } from '@app/contracts/dto/auth.dto';
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
@@ -34,5 +41,15 @@ export class AuthController {
     @Payload('refreshToken') refreshToken: string,
   ) {
     return this.jwtTokenService.refreshTokens(userId, refreshToken);
+  }
+
+  @MessagePattern(SEND_RESET_CODE)
+  public async sendResetCode(@Payload('email') email: string | any) {
+    return this.authService.sendResetCode(email);
+  }
+
+  @MessagePattern(RESET_PASSWORD)
+  public async resetPassword(@Payload('dto') dto: ResetPasswordDto) {
+    return this.authService.resetPassword(dto);
   }
 }

@@ -1,5 +1,5 @@
 import { DtoBadRequest, DtoUnauthorized } from '@app/common/swagger/responses';
-import { AuthDto } from '@app/contracts/dto/auth.dto';
+import { AuthDto, ResetPasswordDto } from '@app/contracts/dto/auth.dto';
 import {
   Body,
   Controller,
@@ -114,5 +114,18 @@ export class AuthGatewayController {
     @GetCurrentUser('refreshToken') refreshToken: string,
   ): Promise<void> {
     await this.jwtTokenService.refreshTokens(userId, refreshToken);
+  }
+
+  @Public()
+  @Post('send-reset-code')
+  @HttpCode(HttpStatus.CREATED)
+  public async sendRestCode(@Body() email: string) {
+    return this.authService.sendResetCode(email);
+  }
+
+  @Public()
+  @Post('reset-password')
+  public async resetPassword(@Body() dto: ResetPasswordDto) {
+    return this.authService.resetPassword(dto);
   }
 }
