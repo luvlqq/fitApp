@@ -1,5 +1,6 @@
 import {
   ADD_WORKOUT_TO_FAVORITE,
+  GET_USER_HEALTH_DATA,
   HEALTH_DATA,
   SHOW_USER_INFO,
   SUBSCRIBE_TO_WORKOUT,
@@ -23,6 +24,12 @@ export class UsersGatewayService {
   public async addHealthData(userId: number, dto: HealthDataDto) {
     return await lastValueFrom(
       this.authClient.send(HEALTH_DATA, { userId: userId, dto: dto }),
+    );
+  }
+
+  public async getUserHealthData(userId: number) {
+    return await lastValueFrom(
+      this.authClient.send(GET_USER_HEALTH_DATA, { userId }),
     );
   }
 

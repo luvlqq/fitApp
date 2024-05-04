@@ -121,6 +121,7 @@ export class AuthGatewayController {
   }
 
   @Public()
+  @Throttle({ default: { limit: 3, ttl: 1000 } })
   @Post('send-reset-code')
   @HttpCode(HttpStatus.CREATED)
   public async sendRestCode(@Body() dto: SendResetCodeDto) {
@@ -128,7 +129,9 @@ export class AuthGatewayController {
   }
 
   @Public()
+  @Throttle({ default: { limit: 3, ttl: 1000 } })
   @Post('reset-password')
+  @HttpCode(HttpStatus.OK)
   public async resetPassword(@Body() dto: ResetPasswordDto) {
     return this.authService.resetPassword(dto);
   }

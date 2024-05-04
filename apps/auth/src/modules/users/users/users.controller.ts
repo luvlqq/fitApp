@@ -1,5 +1,6 @@
 import {
   ADD_WORKOUT_TO_FAVORITE,
+  GET_USER_HEALTH_DATA,
   HEALTH_DATA,
   SHOW_USER_INFO,
   SUBSCRIBE_TO_WORKOUT,
@@ -34,6 +35,11 @@ export class UsersMicroserviceController {
     @Payload('dto') dto: UpdateHealthData,
   ) {
     return this.usersService.updateHealthData(userId, dto);
+  }
+
+  @MessagePattern(GET_USER_HEALTH_DATA)
+  public async getUserHealthData(@Payload('userId') userId: number) {
+    return this.usersService.getUserHealthData(userId);
   }
 
   @MessagePattern(ADD_WORKOUT_TO_FAVORITE)

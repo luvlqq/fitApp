@@ -42,6 +42,10 @@ export class UsersMicroserviceService {
     return await this.repository.updateHealthData(userId, dto);
   }
 
+  public async getUserHealthData(userId: number) {
+    return this.repository.findUserHealthData(userId);
+  }
+
   public async addWorkoutToFavorite(userId: number, workoutId: number) {
     return this.repository.addWorkoutToFavorite(userId, workoutId);
   }
