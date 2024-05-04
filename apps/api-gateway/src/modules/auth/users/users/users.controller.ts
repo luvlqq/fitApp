@@ -43,6 +43,11 @@ export class UsersGatewayController {
     return this.usersService.addHealthData(userId, dto);
   }
 
+  @Get('user-health-data')
+  public async getUserHealthData(@GetCurrentUserId() userId: number) {
+    return this.usersService.getUserHealthData(userId);
+  }
+
   @ApiResponse({
     status: 201,
     description: 'Health data successfully updated',
