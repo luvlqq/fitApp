@@ -16,6 +16,16 @@ export class CreateWorkoutsDto {
   @IsNotEmpty()
   duration: number;
 
+  @ApiProperty({ description: 'Workout video url', nullable: false })
+  @IsNotEmpty()
+  @IsString()
+  videoUrl: string;
+
+  @ApiProperty({ description: 'Workout image url', nullable: false })
+  @IsNotEmpty()
+  @IsString()
+  imageUrl: string;
+
   @ApiProperty({
     description: 'Array of exercise ids associated with the workout',
     nullable: false,

@@ -23,6 +23,8 @@ Table Workouts {
   name String [not null]
   description String [not null]
   duration Int [not null]
+  imageUrl String [not null]
+  videoUrl String [not null]
   user User
   userId Int
   FavouriteWorkouts FavouriteWorkouts [not null]
