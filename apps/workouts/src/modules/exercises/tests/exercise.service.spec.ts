@@ -37,10 +37,10 @@ describe('ExerciseService', () => {
       const dto: CreateExerciseDto = {
         name: 'Test Exercise',
         description: 'Test Description',
+        sets: 'Test Sets',
         video: 'Test Video',
+        image: 'Test Image',
         duration: 123,
-        difficultyLevel: DifficultyLevels.Medium,
-        groupOfMuscles: groupOfMusculesENUM.Back,
       };
 
       const expectedExercise = {
@@ -48,10 +48,10 @@ describe('ExerciseService', () => {
         name: 'Test Exercise',
         description: 'Test Description',
         video: 'Test Video',
+        image: 'Test Image',
+        sets: 'Test Sets',
         duration: 123,
         workoutId: 1,
-        difficultyLevel: DifficultyLevels.Medium,
-        groupOfMuscles: groupOfMusculesENUM.Back,
       };
 
       jest

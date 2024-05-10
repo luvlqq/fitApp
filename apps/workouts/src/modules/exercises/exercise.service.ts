@@ -47,7 +47,11 @@ export class ExerciseMicroserviceService {
     try {
       return await fn();
     } catch (e) {
-      await this.audit.createAuditLog(ExerciseMicroserviceService.name, '', e);
+      await this.audit.createAuditLog(
+        ExerciseMicroserviceService.name,
+        '',
+        String(e),
+      );
       if (id !== undefined && dto !== undefined) {
         this.logger.error(`Exercise with id: ${id} and ${dto} has an error`, {
           service: ExerciseMicroserviceService.name,
@@ -56,7 +60,7 @@ export class ExerciseMicroserviceService {
         await this.audit.createAuditLog(
           ExerciseMicroserviceService.name,
           '',
-          e,
+          String(e),
         );
         this.logger.error(`Exercise with id: ${id} has an error`, {
           service: ExerciseMicroserviceService.name,
@@ -65,7 +69,7 @@ export class ExerciseMicroserviceService {
         await this.audit.createAuditLog(
           ExerciseMicroserviceService.name,
           '',
-          e,
+          String(e),
         );
         this.logger.error(`Error ${e}`, {
           service: ExerciseMicroserviceService.name,

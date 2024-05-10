@@ -1,9 +1,11 @@
 import { LONG, MEDIUM, SHORT } from '@app/common/configuration';
 import configuration from '@app/common/configuration/configuration';
+import { LoggingInterceptor } from '@app/common/interceptors/logging.interceptor';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 
 import { AuthGatewayModule } from './modules/auth/auth/auth.module';
 import { AtGuard } from './modules/auth/auth/guards';
@@ -24,6 +26,7 @@ import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.modu
       envFilePath: '.env',
       isGlobal: true,
     }),
+    PrometheusModule.register(),
     AuthGatewayModule,
     UsersGatewayModule,
     AppleHealthGatewayModule,
@@ -43,6 +46,10 @@ import { WorkoutsGatewayModule } from './modules/workouts/workouts/workouts.modu
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor,
     },
   ],
 })

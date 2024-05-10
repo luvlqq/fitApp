@@ -1,0 +1,201 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table User {
+  id Int [increment, unique, not null]
+  email String [unique, not null]
+  password String [not null]
+  hashRt String
+  role Role [not null, default: 'User']
+  createdAt DateTime [default: `now()`, not null]
+  resetCode String
+  Workouts Workouts [not null]
+  HealthData HealthData
+  FavouriteWorkouts FavouriteWorkouts [not null]
+  Achievements Achievements [not null]
+  Goals Goals [not null]
+  NutrionPlans NutrionPlans [not null]
+}
+
+Table Workouts {
+  id Int [increment, unique, not null]
+  name String [not null]
+  description String [not null]
+  duration Int [not null]
+  user User
+  userId Int
+  FavouriteWorkouts FavouriteWorkouts [not null]
+  WorkoutToExercise WorkoutToExercise [not null]
+  Exercise Exercise
+  exerciseId Int
+}
+
+Table WorkoutToExercise {
+  id Int [pk, increment]
+  workout Workouts [not null]
+  workoutId Int [not null]
+  exercise Exercise [not null]
+  exerciseId Int [not null]
+
+  indexes {
+    (workoutId, exerciseId) [unique]
+  }
+}
+
+Table Exercise {
+  id Int [increment, unique, not null]
+  name String [not null]
+  description String [not null]
+  sets String [not null]
+  video String [not null]
+  image String [not null]
+  duration Int
+  workouts Workouts [not null]
+  WorkoutToExercise WorkoutToExercise [not null]
+  difficultyLevel DifficultyLevels [not null]
+  groupOfMuscles groupOfMusculesENUM [not null]
+}
+
+Table FavouriteWorkouts {
+  id Int [increment, unique, not null]
+  user User [not null]
+  userId Int [not null]
+  workout Workouts [not null]
+  workoutId Int [not null]
+}
+
+Table HealthData {
+  id Int [increment, unique, not null]
+  age Int [not null]
+  gender Gender [not null]
+  weight Float [not null]
+  height Float [not null]
+  dateOfBirth String [not null]
+  primaryGoal MainUserGoal [not null]
+  fitnessLevel FitnessLevel [not null]
+  user User [not null]
+  userId Int [unique, not null]
+}
+
+Table NutrionPlans {
+  id Int [increment, unique, not null]
+  name String [not null]
+  description String [not null]
+  proteins Float [not null]
+  fats Float [not null]
+  carbs Float [not null]
+  kkal Float [not null]
+  isCustom Boolean [not null]
+  Meals Meals [not null]
+  User User
+  userId Int
+}
+
+Table Meals {
+  id Int [increment, unique, not null]
+  name String [not null]
+  photo String [not null]
+  description String [not null]
+  recipe String [not null]
+  timeToPrepare Int [not null]
+  proteins Float [not null]
+  fats Float [not null]
+  carbs Float [not null]
+  kkal Float [not null]
+  nutrition NutrionPlans
+  nutritionId Int
+}
+
+Table Goals {
+  id Int [increment, unique, not null]
+  user User [not null]
+  userId Int [not null]
+  exercisesDone Int [not null]
+  weight Float [not null]
+}
+
+Table Achievements {
+  id Int [increment, unique, not null]
+  name String [not null]
+  description String [not null]
+  dateOfCollect DateTime [default: `now()`, not null]
+  user User
+  userId Int
+}
+
+Table Audit {
+  id Int [increment, unique, not null]
+  scope String
+  name String
+  text String [not null]
+  createdAt DateTime [default: `now()`, not null]
+}
+
+Enum groupOfMusculesENUM {
+  Chest
+  Back
+  Hips
+  Bicep
+  Triceps
+  Delta
+  Press
+  Caviar
+  Trapezium
+  Forearm
+}
+
+Enum Role {
+  Admin
+  User
+}
+
+Enum Gender {
+  Male
+  Female
+}
+
+Enum MainUserGoal {
+  BuildMuscule
+  EatBetter
+  Increase_Endurance
+  Improve_Fitness
+  Burn_Fat
+  Relieve_Stress
+}
+
+Enum FitnessLevel {
+  Beginner
+  Low
+  Medium
+  Advanced
+}
+
+Enum DifficultyLevels {
+  Easy
+  Medium
+  Hard
+  Light_Weitgh_Baby
+}
+
+Ref: Workouts.userId > User.id
+
+Ref: Workouts.exerciseId > Exercise.id
+
+Ref: WorkoutToExercise.workoutId > Workouts.id
+
+Ref: WorkoutToExercise.exerciseId > Exercise.id
+
+Ref: FavouriteWorkouts.userId > User.id
+
+Ref: FavouriteWorkouts.workoutId > Workouts.id
+
+Ref: HealthData.userId - User.id
+
+Ref: NutrionPlans.userId > User.id
+
+Ref: Meals.nutritionId > NutrionPlans.id
+
+Ref: Goals.userId > User.id
+
+Ref: Achievements.userId > User.id

@@ -5,6 +5,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
@@ -34,20 +38,34 @@ model Workouts {
   duration          Int
   user              User?               @relation(fields: [userId], references: [id])
   userId            Int?
-  Exercises         Exercise[]
   FavouriteWorkouts FavouriteWorkouts[]
+  WorkoutToExercise WorkoutToExercise[]
+  Exercise          Exercise?           @relation(fields: [exerciseId], references: [id])
+  exerciseId        Int?
+}
+
+model WorkoutToExercise {
+  id         Int      @id @default(autoincrement())
+  workout    Workouts @relation(fields: [workoutId], references: [id])
+  workoutId  Int
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int
+
+  @@unique([workoutId, exerciseId])
 }
 
 model Exercise {
-  id              Int                 @unique @default(autoincrement())
-  name            String
-  description     String
-  video           String
-  duration        Int
-  workout         Workouts?           @relation(fields: [workoutId], references: [id])
-  workoutId       Int?
-  difficultyLevel DifficultyLevels
-  groupOfMuscles  groupOfMusculesENUM
+  id                Int                 @unique @default(autoincrement())
+  name              String
+  description       String
+  sets              String
+  video             String
+  image             String
+  duration          Int?
+  workouts          Workouts[]
+  WorkoutToExercise WorkoutToExercise[]
+  difficultyLevel   DifficultyLevels
+  groupOfMuscles    groupOfMusculesENUM
 }
 
 model FavouriteWorkouts {

@@ -16,7 +16,11 @@ export class CreateWorkoutsDto {
   @IsNotEmpty()
   duration: number;
 
-  @ApiProperty({ description: "Workout exercises id's", nullable: false })
+  @ApiProperty({
+    description: 'Array of exercise ids associated with the workout',
+    nullable: false,
+    type: Array(Number),
+  })
   @IsArray()
-  exerciseId?: number[];
+  exerciseIds: number[];
 }

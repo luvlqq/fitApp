@@ -1,3 +1,4 @@
+import { WorkoutResponse } from '@app/common/swagger/responses/workouts/workouts.response';
 import {
   CreateWorkoutsDto,
   UpdateWorkoutsDto,
@@ -14,7 +15,13 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+  getSchemaPath,
+} from '@nestjs/swagger';
 import { Cache } from 'cache-manager';
 
 import { GetCurrentUserId } from '../../auth/auth/decorators';
@@ -28,28 +35,35 @@ export class WorkoutsGatewayController {
     @Inject(CACHE_MANAGER) private cacheService: Cache,
   ) {}
 
+  @ApiResponse({
+    status: 200,
+    description: 'Get all workouts',
+    type: WorkoutResponse,
+    schema: {
+      $ref: getSchemaPath(WorkoutResponse),
+    },
+  })
   @Get()
   public async getAllWorkouts() {
-    const cachedData = await this.cacheService.get('allWorkouts');
-
-    if (cachedData) {
-      return cachedData;
-    }
-
-    const workouts = await this.workoutsService.findAllWorkouts();
-    await this.cacheService.set('allWorkouts', workouts);
-    return workouts;
+    return await this.workoutsService.findAllWorkouts();
   }
 
+  @ApiOperation({ deprecated: true })
   @Post()
   public async createWorkout(@Body() dto: CreateWorkoutsDto) {
     return this.workoutsService.createWorkout(dto);
   }
 
+  @ApiBody({
+    type: CreateWorkoutsDto,
+    schema: {
+      $ref: getSchemaPath(CreateWorkoutsDto),
+    },
+  })
   @Post('create-with-exercise')
   public async createWorkoutByExercises(@Body() dto: CreateWorkoutsDto) {
-    console.log(dto.exerciseId);
-    return this.workoutsService.createWorkoutByExercises(dto, dto.exerciseId);
+    console.log(dto.exerciseIds);
+    return this.workoutsService.createWorkoutByExercises(dto, dto.exerciseIds);
   }
 
   @Post('start-workout')

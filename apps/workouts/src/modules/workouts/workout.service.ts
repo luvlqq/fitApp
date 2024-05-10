@@ -31,7 +31,7 @@ export class WorkoutsMicroserviceService {
     exerciseId: number[],
   ): Promise<Workouts> {
     return this.errorWrapper(() =>
-      this.repository.createWorkoutByExercises(dto, exerciseId),
+      this.repository.createWorkoutByExercises(dto),
     );
   }
 
@@ -67,7 +67,7 @@ export class WorkoutsMicroserviceService {
         await this.audit.createAuditLog(
           WorkoutsMicroserviceService.name,
           '',
-          e,
+          String(e),
         );
         this.logger.error(
           `Workout with id: ${id} and ${JSON.stringify(dto)} has an error`,
@@ -79,7 +79,7 @@ export class WorkoutsMicroserviceService {
         await this.audit.createAuditLog(
           WorkoutsMicroserviceService.name,
           '',
-          e,
+          String(e),
         );
         this.logger.error(`Workout with id: ${id} has an error`, {
           service: WorkoutsMicroserviceService.name,
@@ -88,7 +88,7 @@ export class WorkoutsMicroserviceService {
         await this.audit.createAuditLog(
           WorkoutsMicroserviceService.name,
           '',
-          e,
+          String(e),
         );
         this.logger.error(`Error ${e}`, {
           service: WorkoutsMicroserviceService.name,
