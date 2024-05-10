@@ -15,7 +15,7 @@ export class NotificationsController {
 
   @MessagePattern(SEND_NOTIFICATION)
   public async createNotifications(@Payload('userId') userId: number) {
-    await this.notificationsQueue.add('send-notification', {
+    await this.notificationsQueue.add('send-weekly-notification', {
       notification: 'data',
     });
     return this.notificationsService.createNotification();

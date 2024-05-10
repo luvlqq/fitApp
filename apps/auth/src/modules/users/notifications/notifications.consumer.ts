@@ -3,7 +3,7 @@ import { Job } from 'bull';
 
 @Processor('notifications')
 export class NotificationsConsumer {
-  @Process('send-notification')
+  @Process('send-weekly-notification')
   public async createNotifications(job: Job) {
     console.log('Notification created', job.data);
   }

@@ -41,6 +41,11 @@
       "@auth/strategies": [
         "apps/api-gateway/src/modules/auth/auth/strategies/index.ts"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "transform": "typia/lib/transform"
+      }
+    ]
   }
 }

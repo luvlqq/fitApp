@@ -30,6 +30,6 @@ async function bootstrap() {
   sigTerm(app);
 
   logger.log('Gateway is started', 'Microservice Init');
-  await app.listen(PORT);
+  await app.listen(PORT || 3000);
 }
 bootstrap();
