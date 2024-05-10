@@ -11,7 +11,10 @@ export class WorkoutsRepository {
 
   public async getAllWorkouts() {
     return this.prisma.workouts.findMany({
-      include: { Exercises: true, user: true },
+      include: {
+        WorkoutToExercise: { include: { exercise: true } },
+        user: true,
+      },
     });
   }
 
@@ -19,20 +22,27 @@ export class WorkoutsRepository {
     return this.prisma.workouts.create({ data: { ...dto } });
   }
 
-  public async createWorkoutByExercises(
-    dto: CreateWorkoutsDto,
-    exerciseId: number[],
-  ) {
-    return this.prisma.workouts.create({
+  public async createWorkoutByExercises(dto: CreateWorkoutsDto) {
+    const createdWorkout = await this.prisma.workouts.create({
       data: {
         name: dto.name,
         description: dto.description,
         duration: dto.duration,
-        Exercises: {
-          connect: exerciseId.map((id) => ({ id })),
-        },
       },
     });
+
+    await Promise.all(
+      dto.exerciseIds.map((exerciseId) =>
+        this.prisma.workoutToExercise.create({
+          data: {
+            workoutId: createdWorkout.id,
+            exerciseId: exerciseId,
+          },
+        }),
+      ),
+    );
+
+    return createdWorkout;
   }
 
   public async updateWorkout(id: number, dto: UpdateWorkoutsDto) {
