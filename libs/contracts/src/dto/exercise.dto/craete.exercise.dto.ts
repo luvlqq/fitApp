@@ -34,7 +34,7 @@ export class CreateExerciseDto {
     required: false,
   })
   @IsOptional()
-  difficultyLevel?: DifficultyLevels;
+  difficultyLevel: DifficultyLevels;
 
   @ApiProperty({
     description: 'Exercise group of muscle',
@@ -55,5 +55,5 @@ export class CreateExerciseDto {
   })
   @IsOptional()
   @IsString()
-  groupOfMuscles?: groupOfMusculesENUM;
+  groupOfMuscles: groupOfMusculesENUM;
 }

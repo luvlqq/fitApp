@@ -28,6 +28,8 @@ export class WorkoutsRepository {
         name: dto.name,
         description: dto.description,
         duration: dto.duration,
+        videoUrl: dto.videoUrl,
+        imageUrl: dto.imageUrl,
       },
     });
 
