@@ -13,8 +13,14 @@ export class ExerciseRepository {
     return this.prisma.exercise.findMany();
   }
 
-  public async createExercise(dto: CreateExerciseDto) {
-    return this.prisma.exercise.create({ data: { ...dto } });
+  public async createExercise(
+    dto: CreateExerciseDto,
+    image: string,
+    video: string,
+  ) {
+    return this.prisma.exercise.create({
+      data: { ...dto, video: video, image: image },
+    });
   }
 
   public async updateExercise(id: number, dto: UpdateExerciseDto) {

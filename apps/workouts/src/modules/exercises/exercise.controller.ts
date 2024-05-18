@@ -23,8 +23,12 @@ export class ExerciseMicroserviceController {
   }
 
   @MessagePattern(CREATE_EXERCISE)
-  public async createExercise(@Payload('dto') dto: CreateExerciseDto) {
-    return this.exerciseService.createExercise(dto);
+  public async createExercise(
+    @Payload('dto') dto: CreateExerciseDto,
+    @Payload('image') image: Express.Multer.File,
+    @Payload('video') video: Express.Multer.File,
+  ) {
+    return this.exerciseService.createExercise(dto, image, video);
   }
 
   @MessagePattern(UPDATE_EXERCISE)

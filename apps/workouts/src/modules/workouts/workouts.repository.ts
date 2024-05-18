@@ -19,17 +19,22 @@ export class WorkoutsRepository {
   }
 
   public async createWorkouts(dto: CreateWorkoutsDto) {
-    return this.prisma.workouts.create({ data: { ...dto } });
+    // return this.prisma.workouts.create({ data: { ...dto } });
+    return null;
   }
 
-  public async createWorkoutByExercises(dto: CreateWorkoutsDto) {
+  public async createWorkoutByExercises(
+    dto: CreateWorkoutsDto,
+    video: string,
+    image: string,
+  ) {
     const createdWorkout = await this.prisma.workouts.create({
       data: {
         name: dto.name,
         description: dto.description,
         duration: dto.duration,
-        videoUrl: dto.videoUrl,
-        imageUrl: dto.imageUrl,
+        videoUrl: video,
+        imageUrl: image,
       },
     });
 

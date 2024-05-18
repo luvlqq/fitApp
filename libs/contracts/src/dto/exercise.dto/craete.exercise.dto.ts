@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { DifficultyLevels, groupOfMusculesENUM } from '@prisma/client';
+import { Transform } from 'class-transformer';
 import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateExerciseDto {
@@ -16,15 +17,14 @@ export class CreateExerciseDto {
   sets: string;
 
   @ApiProperty({ description: 'Exercise video', nullable: false })
-  @IsString()
-  video: string;
+  video?: string;
 
   @ApiProperty({ description: 'Preview image' })
-  @IsString()
-  image: string;
+  image?: string;
 
   @ApiProperty({ description: 'Exercise duration', nullable: false })
   @IsNumber()
+  @Transform(({ value }) => parseInt(value, 10))
   duration: number;
 
   @ApiProperty({

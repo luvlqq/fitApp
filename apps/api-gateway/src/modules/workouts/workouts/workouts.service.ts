@@ -23,20 +23,28 @@ export class WorkoutsGatewayService {
     return await lastValueFrom(this.workoutsClient.send(SHOW_ALL_WORKOUTS, {}));
   }
 
-  public async createWorkout(dto: CreateWorkoutsDto) {
+  public async createWorkout(
+    dto: CreateWorkoutsDto,
+    image: Express.Multer.File,
+    video: Express.Multer.File,
+  ) {
     return await lastValueFrom(
-      this.workoutsClient.send(CREATE_WORKOUT, { dto: dto }),
+      this.workoutsClient.send(CREATE_WORKOUT, { dto: dto, image, video }),
     );
   }
 
   public async createWorkoutByExercises(
     dto: CreateWorkoutsDto,
     exerciseId: number[],
+    image: Express.Multer.File,
+    video: Express.Multer.File,
   ) {
     return await lastValueFrom(
       this.workoutsClient.send(CREATE_WORKOUT_BY_EXERCISES, {
         dto: dto,
         exerciseId: exerciseId,
+        image: image,
+        video: video,
       }),
     );
   }

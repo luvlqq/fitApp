@@ -20,9 +20,17 @@ export class ExerciseGatewayService {
     return await lastValueFrom(this.workoutsClient.send(GET_ALL_EXERCISES, {}));
   }
 
-  public async createExercise(dto: CreateExerciseDto) {
+  public async createExercise(
+    dto: CreateExerciseDto,
+    image: Express.Multer.File,
+    video: Express.Multer.File,
+  ) {
     return await lastValueFrom(
-      this.workoutsClient.send(CREATE_EXERCISE, { dto: dto }),
+      this.workoutsClient.send(CREATE_EXERCISE, {
+        dto: dto,
+        image,
+        video,
+      }),
     );
   }
 

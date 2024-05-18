@@ -11,7 +11,10 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UploadedFiles,
+  UseInterceptors,
 } from '@nestjs/common';
+import { AnyFilesInterceptor } from '@nestjs/platform-express';
 import { ApiTags } from '@nestjs/swagger';
 
 import { ExerciseGatewayService } from './exercise.service';
@@ -27,8 +30,14 @@ export class ExerciseGatewayController {
   }
 
   @Post('create')
-  public async createExercise(@Body() dto: CreateExerciseDto) {
-    return this.exerciseService.createExercise(dto);
+  @UseInterceptors(AnyFilesInterceptor())
+  public async createExercise(
+    @Body() dto: CreateExerciseDto,
+    @UploadedFiles() files: Array<Express.Multer.File>,
+  ) {
+    const image = files.find((file) => file.fieldname === 'image');
+    const video = files.find((file) => file.fieldname === 'video');
+    return this.exerciseService.createExercise(dto, image, video);
   }
 
   @Patch(':id')
