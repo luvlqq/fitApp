@@ -184,7 +184,7 @@ Ref: Workouts.userId > User.id
 
 Ref: Workouts.exerciseId > Exercise.id
 
-Ref: WorkoutToExercise.workoutId > Workouts.id
+Ref: WorkoutToExercise.workoutId > Workouts.id [delete: Cascade]
 
 Ref: WorkoutToExercise.exerciseId > Exercise.id
 
