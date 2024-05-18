@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 import { IsArray, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateWorkoutsDto {
@@ -14,17 +15,14 @@ export class CreateWorkoutsDto {
 
   @ApiProperty({ description: 'Workout duration', nullable: false })
   @IsNotEmpty()
+  @Transform(({ value }) => parseInt(value, 10))
   duration: number;
 
   @ApiProperty({ description: 'Workout video url', nullable: false })
-  @IsNotEmpty()
-  @IsString()
-  videoUrl: string;
+  videoUrl?: string;
 
   @ApiProperty({ description: 'Workout image url', nullable: false })
-  @IsNotEmpty()
-  @IsString()
-  imageUrl: string;
+  imageUrl?: string;
 
   @ApiProperty({
     description: 'Array of exercise ids associated with the workout',
@@ -32,5 +30,15 @@ export class CreateWorkoutsDto {
     type: Array(Number),
   })
   @IsArray()
-  exerciseIds: number[];
+  @Transform(({ value }) => {
+    if (typeof value === 'string') {
+      try {
+        return JSON.parse(value).map((id: string) => parseInt(id, 10));
+      } catch (e) {
+        return [];
+      }
+    }
+    return value;
+  })
+  exerciseIds?: number[];
 }

@@ -20,7 +20,12 @@ async function bootstrap() {
   // TODO uncommit after deploy
   // app.setGlobalPrefix('api');
   app.enableShutdownHooks();
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
+  );
   app.enableCors({ origin: true, credentials: true });
   app.use(cookieParser());
   app.use(helmet());

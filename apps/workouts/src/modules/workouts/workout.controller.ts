@@ -34,8 +34,15 @@ export class WorkoutsController {
   public async createWorkoutByExercises(
     @Payload('dto') dto: CreateWorkoutsDto,
     @Payload('exerciseId') exerciseId: number[],
+    @Payload('video') video: Express.Multer.File,
+    @Payload('image') image: Express.Multer.File,
   ) {
-    return this.workoutsService.createWorkoutByExercises(dto, exerciseId);
+    return this.workoutsService.createWorkoutByExercises(
+      dto,
+      exerciseId,
+      video,
+      image,
+    );
   }
 
   @MessagePattern(UPDATE_WORKOUT)

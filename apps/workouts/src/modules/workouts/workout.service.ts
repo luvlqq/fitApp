@@ -1,4 +1,5 @@
 import { AuditService } from '@app/common/audit/audit.service';
+import { AwsService } from '@app/common/aws/aws.service';
 import {
   CreateWorkoutsDto,
   UpdateWorkoutsDto,
@@ -16,6 +17,7 @@ export class WorkoutsMicroserviceService {
     private readonly repository: WorkoutsRepository,
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
     private readonly audit: AuditService,
+    private readonly uploadService: AwsService,
   ) {}
 
   public async getAllWorkouts(): Promise<Workouts[]> {
@@ -29,9 +31,18 @@ export class WorkoutsMicroserviceService {
   public async createWorkoutByExercises(
     dto: CreateWorkoutsDto,
     exerciseId: number[],
+    video: Express.Multer.File,
+    image: Express.Multer.File,
   ): Promise<Workouts> {
+    const uploadedVideoUrl = await this.uploadService.uploadFile(video);
+    const uploadedImageUrl = await this.uploadService.uploadFile(image);
+
     return this.errorWrapper(() =>
-      this.repository.createWorkoutByExercises(dto),
+      this.repository.createWorkoutByExercises(
+        dto,
+        uploadedVideoUrl,
+        uploadedImageUrl,
+      ),
     );
   }
 

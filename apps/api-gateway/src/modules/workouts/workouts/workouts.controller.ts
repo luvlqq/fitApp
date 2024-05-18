@@ -14,7 +14,11 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UploadedFile,
+  UploadedFiles,
+  UseInterceptors,
 } from '@nestjs/common';
+import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import {
   ApiBody,
   ApiOperation,
@@ -49,9 +53,15 @@ export class WorkoutsGatewayController {
   }
 
   @ApiOperation({ deprecated: true })
+  @UseInterceptors(FileInterceptor('image'))
+  @UseInterceptors(FileInterceptor('video'))
   @Post()
-  public async createWorkout(@Body() dto: CreateWorkoutsDto) {
-    return this.workoutsService.createWorkout(dto);
+  public async createWorkout(
+    @Body() dto: CreateWorkoutsDto,
+    @UploadedFile() image: Express.Multer.File,
+    @UploadedFile() video: Express.Multer.File,
+  ) {
+    return this.workoutsService.createWorkout(dto, image, video);
   }
 
   @ApiBody({
@@ -61,9 +71,20 @@ export class WorkoutsGatewayController {
     },
   })
   @Post('create-with-exercise')
-  public async createWorkoutByExercises(@Body() dto: CreateWorkoutsDto) {
-    console.log(dto.exerciseIds);
-    return this.workoutsService.createWorkoutByExercises(dto, dto.exerciseIds);
+  @UseInterceptors(AnyFilesInterceptor())
+  public async createWorkoutByExercises(
+    @Body() dto: CreateWorkoutsDto,
+    @UploadedFiles() files: Array<Express.Multer.File>,
+  ) {
+    const image = files.find((file) => file.fieldname === 'image');
+    const video = files.find((file) => file.fieldname === 'video');
+
+    return this.workoutsService.createWorkoutByExercises(
+      dto,
+      dto.exerciseIds,
+      image,
+      video,
+    );
   }
 
   @Post('start-workout')
