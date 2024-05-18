@@ -1,0 +1,2167 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>fitapp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">fitapp documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#ADD_WORKOUT_TO_FAVORITE" title="libs/common/src/messages/auth/users/users/constants.ts" ><b>ADD_WORKOUT_TO_FAVORITE</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ALLMEALS" title="libs/common/src/messages/meals/meals/constants.ts" ><b>ALLMEALS</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#anchor" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>anchor</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#box" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>box</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#button" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>button</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#button" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>button</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#buttonContainer" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>buttonContainer</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#code" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>code</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#container" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>container</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#container" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>container</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#CREATE_EXERCISE" title="libs/common/src/messages/workouts/exercises/constants.ts" ><b>CREATE_EXERCISE</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CREATE_USER_DATA" title="libs/common/src/messages/auth/users/appleHealth/constants.ts" ><b>CREATE_USER_DATA</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CREATE_WORKOUT" title="libs/common/src/messages/workouts/workouts/constants.ts" ><b>CREATE_WORKOUT</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CREATE_WORKOUT_BY_EXERCISES" title="libs/common/src/messages/workouts/workouts/constants.ts" ><b>CREATE_WORKOUT_BY_EXERCISES</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CREATEMEALS" title="libs/common/src/messages/meals/meals/constants.ts" ><b>CREATEMEALS</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DELETE_EXERCISE" title="libs/common/src/messages/workouts/exercises/constants.ts" ><b>DELETE_EXERCISE</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DELETE_WORKOUT" title="libs/common/src/messages/workouts/workouts/constants.ts" ><b>DELETE_WORKOUT</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DELETEMEALS" title="libs/common/src/messages/meals/meals/constants.ts" ><b>DELETEMEALS</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FolderID" title="apps/workouts/src/modules/upload_video/constants/constants.ts" ><b>FolderID</b>&nbsp;&nbsp;&nbsp;(apps/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#footer" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>footer</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#GENERATE_ALL_WORKOUTS_REPORT" title="libs/common/src/messages/workouts/workouts/constants.ts" ><b>GENERATE_ALL_WORKOUTS_REPORT</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GENERATE_WORKOUT_REPORT" title="libs/common/src/messages/workouts/workouts/constants.ts" ><b>GENERATE_WORKOUT_REPORT</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GET_ALL_EXERCISES" title="libs/common/src/messages/workouts/exercises/constants.ts" ><b>GET_ALL_EXERCISES</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GET_USER_DATA" title="libs/common/src/messages/auth/users/appleHealth/constants.ts" ><b>GET_USER_DATA</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GET_USER_HEALTH_DATA" title="libs/common/src/messages/auth/users/users/constants.ts" ><b>GET_USER_HEALTH_DATA</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GetCurrentUser" title="apps/api-gateway/src/modules/auth/auth/decorators/get.current.user.decorator.ts" ><b>GetCurrentUser</b>&nbsp;&nbsp;&nbsp;(apps/.../get.current.user.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#GetCurrentUserId" title="apps/api-gateway/src/modules/auth/auth/decorators/get.current.userId.decorator.ts" ><b>GetCurrentUserId</b>&nbsp;&nbsp;&nbsp;(apps/.../get.current.userId.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#heading" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>heading</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#HEALTH_DATA" title="libs/common/src/messages/auth/users/users/constants.ts" ><b>HEALTH_DATA</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#hr" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>hr</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#hr" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>hr</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#LOGIN" title="libs/common/src/messages/auth/auth/constants.ts" ><b>LOGIN</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LONG" title="libs/common/src/configuration/throttler.constants.ts" ><b>LONG</b>&nbsp;&nbsp;&nbsp;(libs/.../throttler.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#main" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>main</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#main" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>main</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#MEDIUM" title="libs/common/src/configuration/throttler.constants.ts" ><b>MEDIUM</b>&nbsp;&nbsp;&nbsp;(libs/.../throttler.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#paragraph" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>paragraph</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#paragraph" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>paragraph</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#Public" title="apps/api-gateway/src/modules/auth/auth/decorators/public.decorator.ts" ><b>Public</b>&nbsp;&nbsp;&nbsp;(apps/.../public.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#REFRESH" title="libs/common/src/messages/auth/auth/constants.ts" ><b>REFRESH</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#REGISTER" title="libs/common/src/messages/auth/auth/constants.ts" ><b>REGISTER</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#REGISTER_USER_BY_GOOGLE" title="libs/common/src/messages/auth/auth/constants.ts" ><b>REGISTER_USER_BY_GOOGLE</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#reportLink" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>reportLink</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#RESET_PASSWORD" title="libs/common/src/messages/auth/auth/constants.ts" ><b>RESET_PASSWORD</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ResetPassword" title="libs/common/src/mail/templates/ResetPasswordMail.tsx" ><b>ResetPassword</b>&nbsp;&nbsp;&nbsp;(libs/.../ResetPasswordMail.tsx)</a>
+                        </li>
+                        <li>
+                            <a href="#Roles" title="apps/api-gateway/src/modules/auth/auth/decorators/roles.decorator.ts" ><b>Roles</b>&nbsp;&nbsp;&nbsp;(apps/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLES_KEY" title="apps/api-gateway/src/modules/auth/auth/decorators/roles.decorator.ts" ><b>ROLES_KEY</b>&nbsp;&nbsp;&nbsp;(apps/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SEND_NOTIFICATION" title="libs/common/src/messages/auth/users/notifications/constants.ts" ><b>SEND_NOTIFICATION</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SEND_RESET_CODE" title="libs/common/src/messages/auth/auth/constants.ts" ><b>SEND_RESET_CODE</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SHORT" title="libs/common/src/configuration/throttler.constants.ts" ><b>SHORT</b>&nbsp;&nbsp;&nbsp;(libs/.../throttler.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SHOW_ALL_WORKOUTS" title="libs/common/src/messages/workouts/workouts/constants.ts" ><b>SHOW_ALL_WORKOUTS</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SHOW_USER_INFO" title="libs/common/src/messages/auth/users/users/constants.ts" ><b>SHOW_USER_INFO</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SIGNOUT" title="libs/common/src/messages/auth/auth/constants.ts" ><b>SIGNOUT</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SUBSCRIBE_TO_WORKOUT" title="libs/common/src/messages/auth/users/users/constants.ts" ><b>SUBSCRIBE_TO_WORKOUT</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TEST" title="libs/common/src/messages/meals/nutrionPlans/constants.ts" ><b>TEST</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_EXERCISE" title="libs/common/src/messages/workouts/exercises/constants.ts" ><b>UPDATE_EXERCISE</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_HEALTH_DATA" title="libs/common/src/messages/auth/users/users/constants.ts" ><b>UPDATE_HEALTH_DATA</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_USER_DATA" title="libs/common/src/messages/auth/users/appleHealth/constants.ts" ><b>UPDATE_USER_DATA</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATE_WORKOUT" title="libs/common/src/messages/workouts/workouts/constants.ts" ><b>UPDATE_WORKOUT</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#UPDATEMEALS" title="libs/common/src/messages/meals/meals/constants.ts" ><b>UPDATEMEALS</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#VALIDATE_USER" title="libs/common/src/messages/auth/auth/constants.ts" ><b>VALIDATE_USER</b>&nbsp;&nbsp;&nbsp;(libs/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#WelcomeEmail" title="libs/common/src/mail/templates/WelcomeMail.tsx" ><b>WelcomeEmail</b>&nbsp;&nbsp;&nbsp;(libs/.../WelcomeMail.tsx)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>libs/common/src/messages/auth/users/users/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ADD_WORKOUT_TO_FAVORITE"></a>
+                    <span class="name">
+                        <span ><b>ADD_WORKOUT_TO_FAVORITE</b></span>
+                        <a href="#ADD_WORKOUT_TO_FAVORITE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/users/addWorkoutToFavourite&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GET_USER_HEALTH_DATA"></a>
+                    <span class="name">
+                        <span ><b>GET_USER_HEALTH_DATA</b></span>
+                        <a href="#GET_USER_HEALTH_DATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/get-user-health-data&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="HEALTH_DATA"></a>
+                    <span class="name">
+                        <span ><b>HEALTH_DATA</b></span>
+                        <a href="#HEALTH_DATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/users/healthData&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SHOW_USER_INFO"></a>
+                    <span class="name">
+                        <span ><b>SHOW_USER_INFO</b></span>
+                        <a href="#SHOW_USER_INFO"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/users/showUserInfo&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SUBSCRIBE_TO_WORKOUT"></a>
+                    <span class="name">
+                        <span ><b>SUBSCRIBE_TO_WORKOUT</b></span>
+                        <a href="#SUBSCRIBE_TO_WORKOUT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/users/subscribeToWorkout&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_HEALTH_DATA"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_HEALTH_DATA</b></span>
+                        <a href="#UPDATE_HEALTH_DATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/users/updateUserHealthData&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/messages/meals/meals/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ALLMEALS"></a>
+                    <span class="name">
+                        <span ><b>ALLMEALS</b></span>
+                        <a href="#ALLMEALS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;meals/allMeals&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CREATEMEALS"></a>
+                    <span class="name">
+                        <span ><b>CREATEMEALS</b></span>
+                        <a href="#CREATEMEALS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;meals/createMeals&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DELETEMEALS"></a>
+                    <span class="name">
+                        <span ><b>DELETEMEALS</b></span>
+                        <a href="#DELETEMEALS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;meals/deleteMeals&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATEMEALS"></a>
+                    <span class="name">
+                        <span ><b>UPDATEMEALS</b></span>
+                        <a href="#UPDATEMEALS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;meals/upgradeMeals&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/mail/templates/WelcomeMail.tsx</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="anchor"></a>
+                    <span class="name">
+                        <span ><b>anchor</b></span>
+                        <a href="#anchor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  color: &#x27;#556cd6&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="box"></a>
+                    <span class="name">
+                        <span ><b>box</b></span>
+                        <a href="#box"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  padding: &#x27;0 48px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="button"></a>
+                    <span class="name">
+                        <span ><b>button</b></span>
+                        <a href="#button"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  backgroundColor: &#x27;#656ee8&#x27;,
+  borderRadius: &#x27;5px&#x27;,
+  color: &#x27;#fff&#x27;,
+  fontSize: &#x27;16px&#x27;,
+  fontWeight: &#x27;bold&#x27;,
+  textDecoration: &#x27;none&#x27;,
+  textAlign: &#x27;center&#x27; as const,
+  display: &#x27;block&#x27;,
+  width: &#x27;100%&#x27;,
+  padding: &#x27;10px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="container"></a>
+                    <span class="name">
+                        <span ><b>container</b></span>
+                        <a href="#container"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  backgroundColor: &#x27;#ffffff&#x27;,
+  margin: &#x27;0 auto&#x27;,
+  padding: &#x27;20px 0 48px&#x27;,
+  marginBottom: &#x27;64px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="footer"></a>
+                    <span class="name">
+                        <span ><b>footer</b></span>
+                        <a href="#footer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  color: &#x27;#8898aa&#x27;,
+  fontSize: &#x27;12px&#x27;,
+  lineHeight: &#x27;16px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hr"></a>
+                    <span class="name">
+                        <span ><b>hr</b></span>
+                        <a href="#hr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  borderColor: &#x27;#e6ebf1&#x27;,
+  margin: &#x27;20px 0&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="main"></a>
+                    <span class="name">
+                        <span ><b>main</b></span>
+                        <a href="#main"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  backgroundColor: &#x27;#f6f9fc&#x27;,
+  fontFamily:
+    &#x27;-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Ubuntu,sans-serif&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paragraph"></a>
+                    <span class="name">
+                        <span ><b>paragraph</b></span>
+                        <a href="#paragraph"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  color: &#x27;#525f7f&#x27;,
+
+  fontSize: &#x27;16px&#x27;,
+  lineHeight: &#x27;24px&#x27;,
+  textAlign: &#x27;left&#x27; as const,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="WelcomeEmail"></a>
+                    <span class="name">
+                        <span ><b>WelcomeEmail</b></span>
+                        <a href="#WelcomeEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; (
+  &lt;Html&gt;
+    &lt;Head /&gt;
+    &lt;Preview&gt;You&#x27;re now ready to make live with Pocket Trainer!&lt;/Preview&gt;
+    &lt;Body style&#x3D;{main}&gt;
+      &lt;Container style&#x3D;{container}&gt;
+        &lt;Section style&#x3D;{box}&gt;
+          &lt;Hr style&#x3D;{hr} /&gt;
+          &lt;Img
+            src&#x3D;&quot;https://www.body-burn.com/wp-content/uploads/2024/01/sam-sulek-biographie.webp&quot;
+            width&#x3D;&quot;450&quot;
+            height&#x3D;&quot;300&quot;
+          /&gt;
+          &lt;Text style&#x3D;{paragraph}&gt;
+            Thanks for register! You&#x27;re now ready to make live with Pocket
+            Trainer!
+          &lt;/Text&gt;
+          &lt;Text style&#x3D;{paragraph}&gt;
+            You can view your progress and a lot of other information about you
+            in your dashboard.
+          &lt;/Text&gt;
+          &lt;Hr style&#x3D;{hr} /&gt;
+          &lt;Text style&#x3D;{paragraph}&gt;
+            We&#x27;ll be here to help you with any step along the way.
+          &lt;/Text&gt;
+          &lt;Text style&#x3D;{paragraph}&gt;— The Pocket Trainer Team&lt;/Text&gt;
+          &lt;Hr style&#x3D;{hr} /&gt;
+          &lt;Text style&#x3D;{footer}&gt;Pocket Trainer, Grodno, Belarus&lt;/Text&gt;
+        &lt;/Section&gt;
+      &lt;/Container&gt;
+    &lt;/Body&gt;
+  &lt;/Html&gt;
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/mail/templates/ResetPasswordMail.tsx</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="button"></a>
+                    <span class="name">
+                        <span ><b>button</b></span>
+                        <a href="#button"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  backgroundColor: &#x27;#5e6ad2&#x27;,
+  borderRadius: &#x27;3px&#x27;,
+  fontWeight: &#x27;600&#x27;,
+  color: &#x27;#fff&#x27;,
+  fontSize: &#x27;15px&#x27;,
+  textDecoration: &#x27;none&#x27;,
+  textAlign: &#x27;center&#x27; as const,
+  display: &#x27;block&#x27;,
+  padding: &#x27;11px 23px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buttonContainer"></a>
+                    <span class="name">
+                        <span ><b>buttonContainer</b></span>
+                        <a href="#buttonContainer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  padding: &#x27;27px 0 27px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="code"></a>
+                    <span class="name">
+                        <span ><b>code</b></span>
+                        <a href="#code"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  fontFamily: &#x27;monospace&#x27;,
+  fontWeight: &#x27;700&#x27;,
+  padding: &#x27;1px 4px&#x27;,
+  backgroundColor: &#x27;#dfe1e4&#x27;,
+  letterSpacing: &#x27;-0.3px&#x27;,
+  fontSize: &#x27;21px&#x27;,
+  borderRadius: &#x27;4px&#x27;,
+  color: &#x27;#3c4149&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="container"></a>
+                    <span class="name">
+                        <span ><b>container</b></span>
+                        <a href="#container"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  margin: &#x27;0 auto&#x27;,
+  padding: &#x27;20px 0 48px&#x27;,
+  maxWidth: &#x27;560px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="heading"></a>
+                    <span class="name">
+                        <span ><b>heading</b></span>
+                        <a href="#heading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  fontSize: &#x27;24px&#x27;,
+  letterSpacing: &#x27;-0.5px&#x27;,
+  lineHeight: &#x27;1.3&#x27;,
+  fontWeight: &#x27;400&#x27;,
+  color: &#x27;#484848&#x27;,
+  padding: &#x27;17px 0 0&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hr"></a>
+                    <span class="name">
+                        <span ><b>hr</b></span>
+                        <a href="#hr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  borderColor: &#x27;#dfe1e4&#x27;,
+  margin: &#x27;42px 0 26px&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="main"></a>
+                    <span class="name">
+                        <span ><b>main</b></span>
+                        <a href="#main"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  backgroundColor: &#x27;#ffffff&#x27;,
+  fontFamily:
+    &#x27;-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica Neue&quot;,sans-serif&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paragraph"></a>
+                    <span class="name">
+                        <span ><b>paragraph</b></span>
+                        <a href="#paragraph"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  margin: &#x27;0 0 15px&#x27;,
+  fontSize: &#x27;15px&#x27;,
+  lineHeight: &#x27;1.4&#x27;,
+  color: &#x27;#3c4149&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reportLink"></a>
+                    <span class="name">
+                        <span ><b>reportLink</b></span>
+                        <a href="#reportLink"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  fontSize: &#x27;14px&#x27;,
+  color: &#x27;#b4becc&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ResetPassword"></a>
+                    <span class="name">
+                        <span ><b>ResetPassword</b></span>
+                        <a href="#ResetPassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(validationCode: string) &#x3D;&gt; (
+  &lt;Html&gt;
+    &lt;Head /&gt;
+    &lt;Preview&gt;Your reset code for Pocket Trainer&lt;/Preview&gt;
+    &lt;Body style&#x3D;{main}&gt;
+      &lt;Container style&#x3D;{container}&gt;
+        &lt;Img
+          src&#x3D;{
+            &#x27;https://www.hollywoodreporter.com/wp-content/uploads/2023/05/GettyImages-115094961-H-2023.jpg?w&#x3D;1296&#x27;
+          }
+          width&#x3D;&quot;450&quot;
+          height&#x3D;&quot;300&quot;
+        /&gt;
+        &lt;Heading style&#x3D;{heading}&gt;
+          Your password reset code for Pocket Trainer
+        &lt;/Heading&gt;
+        &lt;Text style&#x3D;{paragraph}&gt;
+          This code will only be valid for the next 5 minutes.
+        &lt;/Text&gt;
+        &lt;code style&#x3D;{code}&gt;{validationCode}&lt;/code&gt;
+      &lt;/Container&gt;
+    &lt;/Body&gt;
+  &lt;/Html&gt;
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/messages/workouts/exercises/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CREATE_EXERCISE"></a>
+                    <span class="name">
+                        <span ><b>CREATE_EXERCISE</b></span>
+                        <a href="#CREATE_EXERCISE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;exercise/create&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DELETE_EXERCISE"></a>
+                    <span class="name">
+                        <span ><b>DELETE_EXERCISE</b></span>
+                        <a href="#DELETE_EXERCISE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;exercise/delete&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GET_ALL_EXERCISES"></a>
+                    <span class="name">
+                        <span ><b>GET_ALL_EXERCISES</b></span>
+                        <a href="#GET_ALL_EXERCISES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;exercise/getAll&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_EXERCISE"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_EXERCISE</b></span>
+                        <a href="#UPDATE_EXERCISE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;exercise/update&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/messages/auth/users/appleHealth/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CREATE_USER_DATA"></a>
+                    <span class="name">
+                        <span ><b>CREATE_USER_DATA</b></span>
+                        <a href="#CREATE_USER_DATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/appleHealth/createUserData&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GET_USER_DATA"></a>
+                    <span class="name">
+                        <span ><b>GET_USER_DATA</b></span>
+                        <a href="#GET_USER_DATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/appleHealth/getUserData&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_USER_DATA"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_USER_DATA</b></span>
+                        <a href="#UPDATE_USER_DATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;users/appleHealth/updateUserData&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/messages/workouts/workouts/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CREATE_WORKOUT"></a>
+                    <span class="name">
+                        <span ><b>CREATE_WORKOUT</b></span>
+                        <a href="#CREATE_WORKOUT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;workouts/create&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CREATE_WORKOUT_BY_EXERCISES"></a>
+                    <span class="name">
+                        <span ><b>CREATE_WORKOUT_BY_EXERCISES</b></span>
+                        <a href="#CREATE_WORKOUT_BY_EXERCISES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;workouts/createById&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DELETE_WORKOUT"></a>
+                    <span class="name">
+                        <span ><b>DELETE_WORKOUT</b></span>
+                        <a href="#DELETE_WORKOUT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;workouts/delete&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GENERATE_ALL_WORKOUTS_REPORT"></a>
+                    <span class="name">
+                        <span ><b>GENERATE_ALL_WORKOUTS_REPORT</b></span>
+                        <a href="#GENERATE_ALL_WORKOUTS_REPORT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;workouts/generate-all-workouts-report&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GENERATE_WORKOUT_REPORT"></a>
+                    <span class="name">
+                        <span ><b>GENERATE_WORKOUT_REPORT</b></span>
+                        <a href="#GENERATE_WORKOUT_REPORT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;workouts/generate-report&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SHOW_ALL_WORKOUTS"></a>
+                    <span class="name">
+                        <span ><b>SHOW_ALL_WORKOUTS</b></span>
+                        <a href="#SHOW_ALL_WORKOUTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;workouts/showAll&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="UPDATE_WORKOUT"></a>
+                    <span class="name">
+                        <span ><b>UPDATE_WORKOUT</b></span>
+                        <a href="#UPDATE_WORKOUT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;workouts/update&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/workouts/src/modules/upload_video/constants/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FolderID"></a>
+                    <span class="name">
+                        <span ><b>FolderID</b></span>
+                        <a href="#FolderID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;1X6NHHV_Dinca4c6o94C88RbQnWaPKzyM&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/api-gateway/src/modules/auth/auth/decorators/get.current.user.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetCurrentUser"></a>
+                    <span class="name">
+                        <span ><b>GetCurrentUser</b></span>
+                        <a href="#GetCurrentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createParamDecorator(
+  (data: string | undefined, context: ExecutionContext) &#x3D;&gt; {
+    const request &#x3D; context.switchToHttp().getRequest();
+    if (!data) {
+      return request.user;
+    }
+    return request.user[data];
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/api-gateway/src/modules/auth/auth/decorators/get.current.userId.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetCurrentUserId"></a>
+                    <span class="name">
+                        <span ><b>GetCurrentUserId</b></span>
+                        <a href="#GetCurrentUserId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createParamDecorator(
+  (data: undefined, context: ExecutionContext): number &#x3D;&gt; {
+    const request &#x3D; context.switchToHttp().getRequest();
+    return request.user[&#x27;sub&#x27;];
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/messages/auth/auth/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOGIN"></a>
+                    <span class="name">
+                        <span ><b>LOGIN</b></span>
+                        <a href="#LOGIN"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/login&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="REFRESH"></a>
+                    <span class="name">
+                        <span ><b>REFRESH</b></span>
+                        <a href="#REFRESH"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/refresh&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="REGISTER"></a>
+                    <span class="name">
+                        <span ><b>REGISTER</b></span>
+                        <a href="#REGISTER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/register&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="REGISTER_USER_BY_GOOGLE"></a>
+                    <span class="name">
+                        <span ><b>REGISTER_USER_BY_GOOGLE</b></span>
+                        <a href="#REGISTER_USER_BY_GOOGLE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/google/register&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RESET_PASSWORD"></a>
+                    <span class="name">
+                        <span ><b>RESET_PASSWORD</b></span>
+                        <a href="#RESET_PASSWORD"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/reset-password&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SEND_RESET_CODE"></a>
+                    <span class="name">
+                        <span ><b>SEND_RESET_CODE</b></span>
+                        <a href="#SEND_RESET_CODE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/send-reset-code&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SIGNOUT"></a>
+                    <span class="name">
+                        <span ><b>SIGNOUT</b></span>
+                        <a href="#SIGNOUT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/signout&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="VALIDATE_USER"></a>
+                    <span class="name">
+                        <span ><b>VALIDATE_USER</b></span>
+                        <a href="#VALIDATE_USER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth/validateUser&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/configuration/throttler.constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LONG"></a>
+                    <span class="name">
+                        <span ><b>LONG</b></span>
+                        <a href="#LONG"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  name: &#x27;long&#x27;,
+  ttl: 60000,
+  limit: 100,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MEDIUM"></a>
+                    <span class="name">
+                        <span ><b>MEDIUM</b></span>
+                        <a href="#MEDIUM"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  name: &#x27;medium&#x27;,
+  ttl: 10000,
+  limit: 20,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SHORT"></a>
+                    <span class="name">
+                        <span ><b>SHORT</b></span>
+                        <a href="#SHORT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  name: &#x27;short&#x27;,
+  ttl: 1000,
+  limit: 3,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/api-gateway/src/modules/auth/auth/decorators/public.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Public"></a>
+                    <span class="name">
+                        <span ><b>Public</b></span>
+                        <a href="#Public"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; SetMetadata(&#x27;isPublic&#x27;, true)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/api-gateway/src/modules/auth/auth/decorators/roles.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Roles"></a>
+                    <span class="name">
+                        <span ><b>Roles</b></span>
+                        <a href="#Roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(...roles: Role[]) &#x3D;&gt; SetMetadata(ROLES_KEY, roles)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLES_KEY"></a>
+                    <span class="name">
+                        <span ><b>ROLES_KEY</b></span>
+                        <a href="#ROLES_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;roles&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/messages/auth/users/notifications/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SEND_NOTIFICATION"></a>
+                    <span class="name">
+                        <span ><b>SEND_NOTIFICATION</b></span>
+                        <a href="#SEND_NOTIFICATION"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;notifications/sendNotification&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/common/src/messages/meals/nutrionPlans/constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TEST"></a>
+                    <span class="name">
+                        <span ><b>TEST</b></span>
+                        <a href="#TEST"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;TEST&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
