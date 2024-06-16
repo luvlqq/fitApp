@@ -37,6 +37,11 @@ export class ExerciseMicroserviceService {
     );
   }
 
+  public async createLocal(dto: CreateExerciseDto) {
+    console.log('dto', dto);
+    return this.errorWrapper(() => this.repository.createLocal(dto));
+  }
+
   public async updateExercise(id: number, dto: UpdateExerciseDto) {
     return this.errorWrapper(() => this.repository.updateExercise(id, dto));
   }

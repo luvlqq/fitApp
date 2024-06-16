@@ -40,6 +40,11 @@ export class ExerciseGatewayController {
     return this.exerciseService.createExercise(dto, image, video);
   }
 
+  @Post('create-local')
+  public async createLocal(@Body() dto: CreateExerciseDto) {
+    return this.exerciseService.createLocal(dto);
+  }
+
   @Patch(':id')
   public async updateExercise(
     @Param('id', ParseIntPipe) id: number,

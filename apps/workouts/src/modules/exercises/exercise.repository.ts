@@ -23,6 +23,10 @@ export class ExerciseRepository {
     });
   }
 
+  public async createLocal(dto: CreateExerciseDto) {
+    return this.prisma.exercise.create({ data: { ...dto } });
+  }
+
   public async updateExercise(id: number, dto: UpdateExerciseDto) {
     return this.prisma.exercise.update({ where: { id: id }, data: { ...dto } });
   }

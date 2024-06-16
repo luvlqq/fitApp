@@ -31,6 +31,11 @@ export class ExerciseMicroserviceController {
     return this.exerciseService.createExercise(dto, image, video);
   }
 
+  @MessagePattern('CREATE_LOCAL')
+  public async createLocal(@Payload('dto') dto: CreateExerciseDto) {
+    return this.exerciseService.createLocal(dto);
+  }
+
   @MessagePattern(UPDATE_EXERCISE)
   public async updateExercise(
     @Payload('id') id: number,

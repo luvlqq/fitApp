@@ -16,11 +16,13 @@ export class CreateExerciseDto {
   @IsString()
   sets: string;
 
+  @IsString()
   @ApiProperty({ description: 'Exercise video', nullable: false })
-  video?: string;
+  video: string;
 
+  @IsString()
   @ApiProperty({ description: 'Preview image' })
-  image?: string;
+  image: string;
 
   @ApiProperty({ description: 'Exercise duration', nullable: false })
   @IsNumber()

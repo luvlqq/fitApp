@@ -34,7 +34,11 @@ export class AwsService {
     };
 
     try {
+      console.log('file in try');
+
       const uploadResult = await this.s3.upload(params).promise();
+
+      console.log('file after upload try');
       return uploadResult.Location;
     } catch (error) {
       console.error('Upload error:', error);

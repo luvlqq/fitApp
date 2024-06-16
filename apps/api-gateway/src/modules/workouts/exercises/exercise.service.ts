@@ -34,6 +34,14 @@ export class ExerciseGatewayService {
     );
   }
 
+  public async createLocal(dto: CreateExerciseDto) {
+    return await lastValueFrom(
+      this.workoutsClient.send('CREATE_LOCAL', {
+        dto: dto,
+      }),
+    );
+  }
+
   public async updateExercise(id: number, dto: UpdateExerciseDto) {
     return await lastValueFrom(
       this.workoutsClient.send(UPDATE_EXERCISE, { id: id, dto: dto }),
